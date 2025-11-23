@@ -2,237 +2,357 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>juvie</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>juvie</title>
 
-    <meta property="og:title" content="juvie" />
-    <meta property="og:description" content="coming 2026." />
-    <meta property="og:url" content="https://juvie.me" />
-    <meta property="og:type" content="website" />
+<meta property="og:title" content="juvie" />
+<meta property="og:description" content="coming 2026." />
+<meta property="og:url" content="https://juvie.me" />
+<meta property="og:type" content="website" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        body {
-            background: radial-gradient(circle at top, #200000 0%, #000 55%, #000 100%);
-            color: #ffffff;
-            font-family: "Cardo", serif;
-            overflow-x: hidden;
-        }
+<style>
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #180000 0%, #050000 55%, #000 100%);
+  color: #ffffff;
+  font-family: "Cardo", serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  padding-bottom: 80px;
+  position: relative;
+}
 
-        .hidden-pre {
-            visibility: hidden;
-        }
+.fog-layer {
+  position: fixed;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 0, 0, 0.27), transparent 55%),
+    radial-gradient(circle at 80% 100%, rgba(200, 0, 0, 0.33), transparent 60%),
+    radial-gradient(circle at 50% 40%, rgba(255, 80, 80, 0.16), transparent 60%);
+  opacity: 0.95;
+  mix-blend-mode: screen;
+  filter: blur(7px);
+  animation: fogShift 40s linear infinite alternate;
+  pointer-events: none;
+  z-index: -2;
+}
 
-        @keyframes drop {
-            0% { opacity: 0; transform: translateY(-22px); }
-            70% { opacity: 1; transform: translateY(3px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+.vignette {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, transparent 45%, rgba(0,0,0,0.78) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
 
-        @keyframes waveColor {
-            0% { color: #ffffff; }
-            50% { color: #b30000; }
-            100% { color: #ffffff; }
-        }
+@keyframes fogShift {
+  0% { transform: translate3d(-40px,20px,0) scale(1.08); }
+  50% { transform: translate3d(25px,-30px,0) scale(1.03); }
+  100% { transform: translate3d(40px,35px,0) scale(1.12); }
+}
 
-        .ascii {
-            font-family: monospace;
-            white-space: pre;
-            line-height: 1.1;
-            opacity: 0;
-            animation: drop 0.8s ease forwards 0s, waveColor 6s ease-in-out infinite 0.8s;
-        }
+.center {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
 
-        @media (max-width: 480px) { .ascii { font-size: 7px; } }
-        @media (min-width: 481px) and (max-width: 768px) { .ascii { font-size: 9px; } }
-        @media (min-width: 769px) and (max-width: 1024px) { .ascii { font-size: 11px; } }
-        @media (min-width: 1025px) { .ascii { font-size: 13px; } }
+.panel {
+  background: rgba(10,0,0,0.72);
+  border-radius: 46px;
+  backdrop-filter: blur(20px) saturate(145%);
+  border: 1px solid rgba(255,0,0,0.2);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.9),
+    0 0 60px rgba(255,0,0,0.28),
+    inset 0 0 26px rgba(140,0,0,0.38);
+  padding: 50px 32px;
+  max-width: 900px;
+  width: 92%;
+  margin-bottom: 56px;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
 
-        .fade-letter {
-            display: inline-block;
-            opacity: 0;
-        }
+.panel-inner {
+  position: relative;
+  z-index: 1;
+}
 
-        .yuvenile-wrapper .fade-letter {
-            margin-right: 0.25em;
-        }
+.panel-title-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-        .song {
-            display: flex;
-            gap: 12px;
-            font-size: 1.55rem;
-            justify-content: flex-start;
-        }
+.hidden-pre {
+  visibility: hidden;
+}
 
-        .roman {
-            font-family: "Cinzel", serif;
-            min-width: 3.2ch;
-            text-align: right;
-        }
+@keyframes drop {
+  0% { opacity: 0; transform: translateY(-28px); }
+  70% { opacity: 1; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 
-        .titleword {
-            font-family: "UnifrakturMaguntia", cursive;
-            display: inline-block;
-        }
+@keyframes waveColor {
+  0% { color: #ffffff; }
+  50% { color: #b30000; }
+  100% { color: #ffffff; }
+}
 
-        .special-font {
-            font-family: "Cormorant Garamond", serif;
-            font-weight: 500;
-            letter-spacing: 0.03em;
-        }
+.fade-letter {
+  display: inline-block;
+  opacity: 0;
+}
 
-        .coming2026 {
-            position: fixed;
-            right: 35px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #b30000;
-            letter-spacing: 0.15em;
-            writing-mode: vertical-rl;
-            font-size: 1rem;
-        }
+.titleword {
+  font-family: "UnifrakturMaguntia", cursive;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0;
+  font-size: clamp(14px, 4vw, 32px);
+  letter-spacing: -0.5px;
+}
 
-        @media (max-width: 768px) {
-            .coming2026 {
-                top: 10px;
-                right: 50%;
-                transform: translateX(50%);
-                writing-mode: horizontal-tb;
-            }
-        }
-    </style>
+.special-font {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 4vw, 32px);
+}
+
+.song {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.roman {
+  font-family: "Cinzel", serif;
+  min-width: 3.2ch;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ascii {
+  display: inline-block;
+  white-space: pre;
+  font-family: monospace;
+  opacity: 0;
+  animation: drop 1s ease forwards .5s, waveColor 6s ease-in-out infinite 1.2s;
+  font-size: clamp(6px, 1.4vw, 14px);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.coming2026 {
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b30000;
+  letter-spacing: 0.18em;
+  writing-mode: vertical-rl;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .coming2026 {
+    top: 14px;
+    right: 50%;
+    transform: translateX(50%);
+    writing-mode: horizontal-tb;
+  }
+}
+
+.particle-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.blood {
+  position: absolute;
+  font-size: 22px;
+  opacity: 0.9;
+  animation: bloodFall 7.5s linear infinite;
+  filter: drop-shadow(0 0 4px rgba(255,0,0,0.6));
+}
+
+@keyframes bloodFall {
+  0% { transform: translateY(-40px) scale(1); opacity: 0; }
+  15% { opacity: 1; }
+  80% { opacity: 0.95; }
+  100% { transform: translateY(140vh) scale(1); opacity: 0; }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="coming2026">COMING 2026</div>
+<div class="fog-layer"></div>
+<div class="vignette"></div>
+<div class="particle-layer" id="particle-layer"></div>
 
-    <section class="min-h-screen flex items-center justify-center px-4">
-        <h1 id="title-main"
-            class="hidden-pre text-5xl md:text-6xl font-semibold tracking-wide text-center"
-            style="color:#b30000;">
-            juvie
-        </h1>
-    </section>
+<div class="coming2026">COMING 2026</div>
 
-    <section class="py-16 px-4 flex justify-center">
+<section class="center min-h-screen px-6">
+  <div class="panel panel-hover" data-depth="0">
+    <div class="panel-title-wrap panel-inner">
+      <h1 id="title-main" class="hidden-pre text-5xl md:text-6xl font-semibold tracking-wide" style="color:#b30000;">
+        juvie
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="center px-6">
+  <div class="panel panel-hover" data-depth="1.1">
+    <div class="panel-inner">
+      <div style="text-align:center;">
         <div class="ascii">
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⡿⠟⠻⢿⣦⠀⠀⠀⠀⠀⠀⣴⡿⠟⠻⠿⣿⣿⣶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⠃⠀⠀⠀⡀⣹⠃⠀⠀⠀⠀⠐⣏⢀⠀⠀⠀⠘⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠠⠀⠀⠀⢠⣿⣿⡿⢟⣛⡄⠀⠀⠀⠉⠁⠀⠀⠀⠠⣀⠀⠈⠉⠀⠀⠀⢠⣛⣻⢿⣿⣿⡄⠀⠀⠀⠄⠀⠀⠀
+⠀⠀⣰⠁⠀⠀⠀⠘⣿⣿⣿⣿⣿⣛⣤⠐⢤⣀⠐⢶⣦⣄⠀⢹⣧⠀⣀⡤⠂⣠⣟⣿⣿⣿⣿⣿⠃⠀⠀⠀⠘⣆⠀⠀
+⠀⢰⠇⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣷⣦⡹⣷⣼⣿⣿⣷⣾⣿⣾⢏⣤⣾⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠸⡆⠀
+⠀⣿⠀⢀⡀⠀⠀⢀⡀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⢀⡠⠀⠀⢀⡀⠀⣿⠀
+⢰⡏⠀⠀⠹⣶⣤⣀⡙⣷⣬⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣥⣾⢋⣀⣴⣾⠏⠀⠀⢸⡇
+⢸⣷⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣟⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⣼⡇
+⢸⣿⡀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣯⡉⠙⠛⢿⣿⣮⡻⣿⣿⢟⣵⣿⡿⠛⠋⢉⣵⣿⣿⣿⣿⣿⡿⠁⠀⠀⠀⢀⣿⡇
+⢸⣿⣧⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣷⠄⠀⠀⠙⢿⣿⣿⣿⣿⡿⠋⠀⠀⠀⣾⣿⣿⣿⣿⣿⡿⠁⠀⠀⠀⠀⣼⣿⡇
+⠸⡟⣿⣷⡀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣷⣦⣶⣿⣿⣿⡙⢋⣿⣿⣿⣷⣶⣾⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⢀⣼⣿⢻⠇
+⠀⠇⢿⣿⣿⣦⡀⠀⠀⠀⠀⠈⢻⣿⣯⠹⡿⣿⣿⣧⣮⡂⠈⣵⣼⣿⣿⢿⠏⣽⣿⠟⠁⠀⠀⠀⠀⢀⣴⣿⣿⣿⠸⠀
+⠀⠀⣼⣿⣿⣿⣿⣦⣄⣀⣀⣼⠀⢿⣿⣆⡄⠸⠹⠛⡿⢿⣿⢿⠟⠏⠃⢠⣰⣿⡿⠀⣧⣀⣀⣠⣴⣿⣿⣿⣿⣷⠀⠀
+⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠸⢻⣿⡷⡴⣀⢀⠀⠈⠁⠀⡀⣄⢦⢿⣿⡏⠇⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀
+⠀⢠⣿⠋⠉⠙⢿⣿⡿⠛⠛⠻⣇⠀⠀⡟⣿⣄⡉⠟⡟⠺⠖⢻⠻⢉⣠⣿⠻⠀⠀⣸⠟⠛⠛⢿⣿⡿⠋⠉⠙⣿⡄⠀
+⠀⢸⡇⠀⠀⠀⠈⣿⠁⠀⠀⠀⠈⢢⠀⠀⠘⣿⣷⡇⣄⢀⡀⣰⢸⣾⣿⠃⠀⠀⠐⠁⠀⠀⠀⠈⣿⠁⠀⠀⠀⢸⡇⠀
+⠀⠀⠇⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡿⣿⣿⣿⣿⣿⣿⢿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠇⠀⠀⠀⠀⢸⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠉⠉⠃⢿⢻⣿⣿⡟⡿⠘⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⡿⠁⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-           ;M;                                ,;m 
-           ;M;.           ,      ,           ;SMM;
-          ;;Mm;         ,;  ____  ;,         ;SMM;
-         ;;;MM;        ; (.MMMMMM.) ;       ,SSMM;;
-       ,;;;mMp'        l  ';mmmm;/  j       SSSMM;;
-     .;;;;;MM;         .\,.mmSSSm,,/,      ,SSSMM;;;
-    ;;;;;;mMM;        .;MMmSSSSSSSmMm;     ;MSSMM;;;;
-   ;;;;;;mMSM;     ,_ ;MMmS;;;;;;mmmM;  -,;MMMMMMm;;;;
-  ;;;;;;;MMSMM;     \"*;M;( ( '') );m;*"/ ;MMMMMM;;;;;,
- .;;;;;;mMMSMM;      \(@;! _     _ !;@)/ ;MMMMMMMM;;;;;,
- ;;;;;;;MMSSSM;       ;,;.*o*> <*o*.;m; ;MMMMMMMMM;;;;;;,
-.;;;;;;;MMSSSMM;     ;Mm;           ;M;,MMMMMMMMMMm;;;;;;.
-;;;;;;;mmMSSSMMMM,   ;Mm;,   '-    ,;M;MMMMMMMSMMMMm;;;;;;;
-;;;;;;;MMMSSSMMMMMMMm;Mm;;,  ___  ,;SmM;MMMMMMSSMMMM;;;;;;;;
-;;'";;;MMMSSSSMMMMMM;MMmS;;,  "  ,;SmMM;MMMMMMSSMMMM;;;;;;;;.
-!   ;;;MMMSSSSSMMMMM;MMMmSS;;._.;;SSmMM;MMMMMMSSMMMM;;;;;;;;;
-    ;;;;*MSSSSSSMMMP;Mm*"'q;'   `;p*"*M;MMMMMSSSSMMM;;;;;;;;;
-    ';;;  ;SS*SSM*M;M;'     `-.        ;;MMMMSSSSSMM;;;;;;;;;,
-     ;;;. ;P  `q; qMM.                 ';MMMMSSSSSMp' ';;;;;;;
-     ;;;; ',    ; .mm!     \.   `.   /  ;MMM' `qSS'    ';;;;;;
-     ';;;       ' mmS';     ;     ,  `. ;'M'   `S       ';;;;;
-      `;;.        mS;;`;    ;     ;    ;M,!     '        ';;;;
-       ';;       .mS;;, ;   '. o  ;   oMM;                ;;;;
-        ';;      MMmS;; `,   ;._.' -_.'MM;                 ;;;
-         `;;     MMmS;;; ;   ;      ;  MM;                 ;;;
-           `'.   'MMmS;; `;) ',    .' ,M;'                 ;;;
-              \    '' ''; ;   ;    ;  ;'                   ;;
-               ;        ; `,  ;    ;  ;                   ;;
-                        |. ;  ; (. ;  ;      _.-.         ;;
-           .-----..__  /   ;  ;   ;' ;\  _.-" .- `.      ;;
-         ;' ___      `*;   `; ';  ;  ; ;'  .-'    :      ;
-         ;     """*-.   `.  ;  ;  ;  ; ' ,'      /       
-         ',          `-_    (.--',`--'..'      .'        
-           `-_          `*-._'.\\\;||\\)     ,'
-              `"*-._        "*`-ll_ll'l    ,'
-                 ,==;*-._           "-.  .'
-              _-'    "*-=`*;-._        ;'
-            ."            ;'  ;"*-.    `
-            ;   ____      ;//'     "-   `,
-            `+   .-/                 ".\\;
-              `*" /                    "'
-        </div>
-    </section>
+<section class="center px-6">
+  <div class="panel panel-hover" data-depth="1.2">
+    <div class="panel-inner text-center">
+      <h2 class="mb-10 text-3xl md:text-4xl tracking-widest" style="font-family:'Cardo', serif; color:#e5e5e5;">
+        <span id="yuvenile-title" class="hidden-pre">YUVENILE</span>
+      </h2>
 
-    <section class="py-28 px-6">
-        <h2 class="text-center mb-16 text-3xl md:text-4xl tracking-widest"
-            style="font-family:'Cardo', serif; color:#e5e5e5;">
-            <span id="yuvenile-title" class="hidden-pre yuvenile-wrapper">YUVENILE</span>
-        </h2>
+      <div class="max-w-xl mx-auto space-y-7 md:space-y-8 text-left">
+        <p class="song"><span class="roman">I.</span> <span class="titleword hidden-pre">intro</span></p>
+        <p class="song"><span class="roman">II.</span> <span class="titleword hidden-pre">romania</span></p>
+        <p class="song"><span class="roman">III.</span> <span class="titleword hidden-pre">bail</span></p>
+        <p class="song"><span class="roman">IV.</span> <span class="titleword special-font hidden-pre">sex therapy</span></p>
+        <p class="song"><span class="roman">V.</span> <span class="titleword hidden-pre">988</span></p>
+        <p class="song"><span class="roman">VI.</span> <span class="titleword hidden-pre">arson</span></p>
+        <p class="song"><span class="roman">VII.</span> <span class="titleword hidden-pre">juvenile</span></p>
+      </div>
 
-        <div class="max-w-xl mx-auto space-y-7 md:space-y-8">
-            <p class="song"><span class="roman">I.</span> <span class="titleword hidden-pre">intro</span></p>
-            <p class="song"><span class="roman">II.</span> <span class="titleword hidden-pre">romania</span></p>
-            <p class="song"><span class="roman">III.</span> <span class="titleword hidden-pre">bail</span></p>
-            <p class="song">
-                <span class="roman">IV.</span>
-                <span class="titleword special-font hidden-pre">sex therapy</span>
-            </p>
-            <p class="song"><span class="roman">V.</span> <span class="titleword hidden-pre">988</span></p>
-            <p class="song"><span class="roman">VI.</span> <span class="titleword hidden-pre">arson</span></p>
-            <p class="song"><span class="roman">VII.</span> <span class="titleword hidden-pre">juvenile</span></p>
-        </div>
+      <p class="text-center text-lg md:text-xl mt-16 italic" style="color:#ffffff;">
+        all roads lead to juvie
+      </p>
+    </div>
+  </div>
+</section>
 
-        <p class="text-center text-lg md:text-xl mt-16 italic" style="color:#ffffff;">
-            all roads lead to juvie
-        </p>
-    </section>
+<script>
+function letterFX(el, delayStart, fallStep, colorMode) {
+  if (!el) return;
+  let txt = el.textContent.trim();
+  el.textContent = "";
+  el.style.visibility = "visible";
+  [...txt].forEach((ch, i) => {
+    const span = document.createElement("span");
+    span.innerHTML = ch === " " ? "&nbsp;" : ch;
+    span.classList.add("fade-letter");
+    const dropDelay = delayStart + i * fallStep;
+    const waveDelay = colorMode ? i * 0.25 : 0;
+    if (!colorMode) {
+      span.style.animation = "drop .75s ease-out forwards " + dropDelay + "s";
+    } else {
+      span.style.animation =
+        "drop .75s ease-out forwards " + dropDelay + "s," +
+        "waveColor 6s ease-in-out infinite " + waveDelay + "s";
+    }
+    el.appendChild(span);
+  });
+  el.classList.remove("hidden-pre");
+}
 
-    <script>
-        function letterFX(el, delayStart, fallStep, colorMode) {
-            if (!el) return;
+document.addEventListener("DOMContentLoaded", () => {
+  letterFX(document.querySelector("#title-main"), 0, 0.14, false);
+  letterFX(document.querySelector("#yuvenile-title"), 0.8, 0.12, true);
+  document.querySelectorAll(".titleword").forEach((el, index) => {
+    letterFX(el, 1.3 + index * 0.4, 0.1, true);
+  });
 
-            const txt = el.textContent.trim();
-            el.textContent = "";
-            el.style.visibility = "visible";
-            el.classList.remove("hidden-pre");
+  const particleLayer = document.getElementById("particle-layer");
+  const bloodCount = 22;
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
 
-            [...txt].forEach((ch, i) => {
-                const span = document.createElement("span");
+  for (let i = 0; i < bloodCount; i++) {
+    const d = document.createElement("div");
+    d.className = "blood";
+    d.textContent = "🩸";
+    const left = Math.random() * vw;
+    const top = Math.random() * vh * -1;
+    const scale = 0.5 + Math.random() * 1.8;
+    const rot = Math.random() * 45;
+    d.style.left = left + "px";
+    d.style.top = top + "px";
+    d.style.transform = "scale(" + scale + ") rotate(" + rot + "deg)";
+    d.style.animationDelay = (Math.random() * -8) + "s";
+    particleLayer.appendChild(d);
+  }
 
-                if (ch === " ") {
-                    span.innerHTML = "&nbsp;";
-                } else {
-                    span.textContent = ch;
-                }
+  const panels = document.querySelectorAll(".panel-hover");
+  let t = 0;
 
-                span.classList.add("fade-letter");
+  function autoFloat() {
+    t += 0.010;
 
-                const dropDelay = delayStart + i * fallStep;
-                const waveDelay = colorMode ? i * 0.25 : 0;
+    panels.forEach((panel, i) => {
+      const depth = parseFloat(panel.getAttribute("data-depth")) || 1.2;
 
-                if (!colorMode) {
-                    span.style.animation = `drop .75s ease-out forwards ${dropDelay}s`;
-                } else {
-                    span.style.animation =
-                        `drop .75s ease-out forwards ${dropDelay}s,
-                         waveColor 6s ease-in-out infinite ${waveDelay}s`;
-                }
+      const tiltX = Math.sin(t * (1.3 + depth * 0.4) + i) * (14 * depth);
+      const tiltY = Math.cos(t * (1.1 + depth * 0.3) + i * 0.7) * (14 * depth);
 
-                el.appendChild(span);
-            });
-        }
+      panel.style.transform =
+        "perspective(1100px) rotateX(" + tiltX + "deg) rotateY(" + tiltY + "deg)";
+    });
 
-        document.addEventListener("DOMContentLoaded", () => {
-            letterFX(document.querySelector("#title-main"), 0, 0.14, false);
-            letterFX(document.querySelector("#yuvenile-title"), 0.8, 0.12, true);
+    requestAnimationFrame(autoFloat);
+  }
 
-            document.querySelectorAll(".titleword").forEach((el, index) => {
-                letterFX(el, 1.3 + index * 0.4, 0.10, true);
-            });
-        });
-    </script>
+  autoFloat();
+});
+</script>
+
 
 </body>
 </html>
