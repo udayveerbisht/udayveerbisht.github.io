@@ -115,20 +115,46 @@ body {
   opacity: 0;
 }
 
-.titleword {
+.title-juvie {
+  position: relative;
   font-family: "UnifrakturMaguntia", cursive;
-  display: inline-flex;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  overflow: hidden;
-  min-width: 0;
-  font-size: clamp(14px, 4vw, 32px);
-  letter-spacing: -0.5px;
+  text-transform: lowercase;
+  letter-spacing: 0.18em;
+  font-size: clamp(36px, 10vw, 72px);
+  text-align: center;
 }
 
-.special-font {
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(15px, 4vw, 32px);
+.title-juvie::before,
+.title-juvie::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.title-juvie::before {
+  transform: translate3d(-2px, -2px, 0);
+  color: rgba(255, 255, 255, 0.18);
+  mix-blend-mode: screen;
+  text-shadow:
+    0 0 18px rgba(255,255,255,0.35),
+    0 0 40px rgba(255,255,255,0.2);
+}
+
+.title-juvie::after {
+  transform: translate3d(2px, 2px, 0);
+  color: rgba(255, 0, 60, 0.85);
+  filter: blur(1px);
+  mix-blend-mode: screen;
+  text-shadow:
+    0 0 26px rgba(255,0,80,0.9),
+    0 0 60px rgba(255,0,0,0.8);
+}
+
+.title-juvie span {
+  text-shadow:
+    0 0 6px rgba(0,0,0,0.9),
+    0 0 18px rgba(255,0,0,0.8);
 }
 
 .song {
@@ -145,6 +171,22 @@ body {
   min-width: 3.2ch;
   text-align: right;
   white-space: nowrap;
+}
+
+.titleword {
+  font-family: "UnifrakturMaguntia", cursive;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0;
+  font-size: clamp(14px, 4vw, 32px);
+  letter-spacing: -0.5px;
+}
+
+.special-font {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 4vw, 32px);
 }
 
 .ascii {
@@ -166,7 +208,7 @@ body {
   color: #b30000;
   letter-spacing: 0.18em;
   writing-mode: vertical-rl;
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   opacity: 0.9;
   text-transform: uppercase;
   z-index: 10;
@@ -215,9 +257,13 @@ body {
 <div class="coming2026">COMING 2026</div>
 
 <section class="center min-h-screen px-6">
-  <div class="panel panel-hover" data-depth="0">
+  <div class="panel panel-hover" data-depth="1.4">
     <div class="panel-title-wrap panel-inner">
-      <h1 id="title-main" class="hidden-pre text-5xl md:text-6xl font-semibold tracking-wide" style="color:#b30000;">
+      <h1
+        id="title-main"
+        class="hidden-pre title-juvie font-semibold tracking-wide"
+        data-text="juvie"
+        style="color:#b30000;">
         juvie
       </h1>
     </div>
@@ -229,27 +275,39 @@ body {
     <div class="panel-inner">
       <div style="text-align:center;">
         <div class="ascii">
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⡿⠟⠻⢿⣦⠀⠀⠀⠀⠀⠀⣴⡿⠟⠻⠿⣿⣿⣶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⠃⠀⠀⠀⡀⣹⠃⠀⠀⠀⠀⠐⣏⢀⠀⠀⠀⠘⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠠⠀⠀⠀⢠⣿⣿⡿⢟⣛⡄⠀⠀⠀⠉⠁⠀⠀⠀⠠⣀⠀⠈⠉⠀⠀⠀⢠⣛⣻⢿⣿⣿⡄⠀⠀⠀⠄⠀⠀⠀
-⠀⠀⣰⠁⠀⠀⠀⠘⣿⣿⣿⣿⣿⣛⣤⠐⢤⣀⠐⢶⣦⣄⠀⢹⣧⠀⣀⡤⠂⣠⣟⣿⣿⣿⣿⣿⠃⠀⠀⠀⠘⣆⠀⠀
-⠀⢰⠇⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣷⣦⡹⣷⣼⣿⣿⣷⣾⣿⣾⢏⣤⣾⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠸⡆⠀
-⠀⣿⠀⢀⡀⠀⠀⢀⡀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⢀⡠⠀⠀⢀⡀⠀⣿⠀
-⢰⡏⠀⠀⠹⣶⣤⣀⡙⣷⣬⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣥⣾⢋⣀⣴⣾⠏⠀⠀⢸⡇
-⢸⣷⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣟⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⣼⡇
-⢸⣿⡀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣯⡉⠙⠛⢿⣿⣮⡻⣿⣿⢟⣵⣿⡿⠛⠋⢉⣵⣿⣿⣿⣿⣿⡿⠁⠀⠀⠀⢀⣿⡇
-⢸⣿⣧⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣷⠄⠀⠀⠙⢿⣿⣿⣿⣿⡿⠋⠀⠀⠀⣾⣿⣿⣿⣿⣿⡿⠁⠀⠀⠀⠀⣼⣿⡇
-⠸⡟⣿⣷⡀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣷⣦⣶⣿⣿⣿⡙⢋⣿⣿⣿⣷⣶⣾⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⢀⣼⣿⢻⠇
-⠀⠇⢿⣿⣿⣦⡀⠀⠀⠀⠀⠈⢻⣿⣯⠹⡿⣿⣿⣧⣮⡂⠈⣵⣼⣿⣿⢿⠏⣽⣿⠟⠁⠀⠀⠀⠀⢀⣴⣿⣿⣿⠸⠀
-⠀⠀⣼⣿⣿⣿⣿⣦⣄⣀⣀⣼⠀⢿⣿⣆⡄⠸⠹⠛⡿⢿⣿⢿⠟⠏⠃⢠⣰⣿⡿⠀⣧⣀⣀⣠⣴⣿⣿⣿⣿⣷⠀⠀
-⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠸⢻⣿⡷⡴⣀⢀⠀⠈⠁⠀⡀⣄⢦⢿⣿⡏⠇⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀
-⠀⢠⣿⠋⠉⠙⢿⣿⡿⠛⠛⠻⣇⠀⠀⡟⣿⣄⡉⠟⡟⠺⠖⢻⠻⢉⣠⣿⠻⠀⠀⣸⠟⠛⠛⢿⣿⡿⠋⠉⠙⣿⡄⠀
-⠀⢸⡇⠀⠀⠀⠈⣿⠁⠀⠀⠀⠈⢢⠀⠀⠘⣿⣷⡇⣄⢀⡀⣰⢸⣾⣿⠃⠀⠀⠐⠁⠀⠀⠀⠈⣿⠁⠀⠀⠀⢸⡇⠀
-⠀⠀⠇⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡿⣿⣿⣿⣿⣿⣿⢿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠇⠀⠀⠀⠀⢸⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠉⠉⠃⢿⢻⣿⣿⡟⡿⠘⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⡿⠁⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        </div>
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⢡⡀⢀⣠⣤⠤⠷⠤⣤⣄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⣄⠀⠀⣀⡴⠟⠉⢠⡀⠠⢤⣄⣠⠀⠉⠻⢦⡀⠀⢀⡴⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⠄⠀⠀⠈⢳⡞⠉⠀⠀⠀⣠⡇⢀⠄⠀⢷⡀⠀⠀⠀⠘⣶⡋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣰⡟⠉⠒⠦⣄⣠⡏⠀⠀⠀⠀⢰⣿⢀⣴⣶⣦⡄⣻⠄⢀⢀⣠⣤⢧⣄⣠⠤⠒⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣶⣿⡋⠀⠀⠀⠀⠀⡟⠀⠀⢠⣠⠀⠀⠹⣿⣿⣿⣿⣿⠋⠀⠈⡍⠀⠀⠈⣿⠀⠀⠀⠀⠒⢦⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⡏⠀⠀⠀⣀⣀⣸⠁⠀⠀⣆⠙⣿⣆⢠⣿⣷⣿⣿⣷⠀⣠⣾⣷⡞⠀⠀⢹⣀⣀⣀⣀⠀⢸⣷⣧⣤⣀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠸⡄⠀⢀⡘⢦⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⣩⠇⡀⠀⢸⠀⠀⠀⠀⠉⢸⣿⣿⣿⣮⡁⡀⠀⠀⠀⠀
+⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⢄⡀⠀⠀⠀⢀⣷⡸⣄⣙⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣖⡚⠁⢀⣞⡀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⡴⣔⠀⠀⠀
+⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠐⠺⡏⣍⣁⠀⣽⣿⣿⣿⣿⣿⣿⣽⣿⣯⣽⣿⣿⣿⣍⢁⡜⠉⠉⠓⢤⣄⣾⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀
+⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠠⣷⣿⣗⡤⠈⣹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠻⠛⢤⡀⠀⠀⣨⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀
+⠀⣿⣿⣿⣿⣿⠿⢿⣿⣿⠿⢿⣿⣿⣿⣿⣷⡀⠈⣿⣿⣄⠀⣿⣿⣿⠁⠹⣿⣿⣿⣿⣿⢿⣿⣗⠀⠀⠀⠉⠂⣠⣿⣿⡿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀
+⢀⡿⡿⠉⣿⡟⠀⢸⣿⠏⠀⠀⢹⠿⠿⢿⣿⣷⣄⠚⢿⣿⣿⣿⡿⠃⢈⣹⣿⣿⣿⣿⣿⡎⢿⣿⣇⠀⠀⣶⣴⣿⣿⣿⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⢸⣿⣿⣾⣿⡇⠀⢸⠋⠀⠀⠀⠸⠀⠀⠀⠉⠛⣿⣷⣟⣙⠿⣿⡁⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⡿⢿⣿⠟⢿⡏⠀⢸⠉⠁⠀⠈⢹⢿⣿⣿⣿⡇
+⢸⣿⣿⣿⣿⡇⠀⠾⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠍⠛⢿⠷⣶⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢿⣿⣆⠀⠁⠀⠀⠀⠀⠈⠀⠀⠀⠀⠞⠀⠘⣿⣿⣟
+⢸⣿⣿⣏⣿⡗⠀⠀⠀⠀⠀⠀⣠⠒⠊⠉⠉⠉⢉⣒⠦⣄⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⣤⣿⣿⠿⠶⠶⢤⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡇
+⠘⣿⣷⣿⡝⠁⠀⠀⠀⠀⠀⠉⢁⠀⠀⠀⠀⠀⠀⠈⢹⣮⣿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠙⠀⠀⠀⠀⠀⠀⠈⠛⢆⠀⠀⠀⠀⠀⠀⠀⠋⢻⡇
+⠀⠻⣿⣤⠁⠀⠀⠀⠀⠀⣤⠈⠋⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⡄⠀⠀⠀⠀⠀⢠⡿⠁
+⠀⠀⢻⣧⡀⠀⠀⠀⠀⠀⢸⡀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡀⠀⠀⠀⠀⣼⠃⠀
+⠀⠀⠈⢿⡄⠀⠀⠀⠀⠀⠙⣧⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣧⠀⠀⣀⡼⠁⠀⠀
+⠀⠀⠀⠀⠙⢶⡀⠀⠀⠀⠀⢿⣷⠀⠀⢀⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡟⠀⠀⠛⠁⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠙⠏⠉⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⢿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⠃⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣷⣀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣞⣿⣿⣿⣿⣿⣿⣿⣼⣿⣿⣿⡿⣾⢻⣿⣿⡟⢻⣿⣿⣿⣿⣿⣿⠙⠳⢤⣀⣀⣀⣠⡤⠖⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⣿⣿⣿⣿⣿⣿⣿⠇⣿⣿⣿⣿⢳⣿⣿⣿⣿⡇⣾⣿⣿⣿⣿⣿⠹⠄⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣟⣿⣿⣿⣿⣻⣿⣾⣿⣿⢸⣿⣿⣿⣿⡇⣿⣿⣿⢹⣿⣿⣇⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣾⣅⡿⣫⠟⣿⣿⡿⢹⡿⠿⣿⣿⣧⢸⣿⣿⣿⣿⠇⣿⣿⠇⡞⣿⡏⠉⢷⠴⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣸⡿⠿⠟⠁⠀⡇⢸⡇⢀⣧⡤⢰⣿⡟⢸⡇⡏⢹⣿⠀⣿⡟⠀⢳⣿⡇⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠞⠁⠀⠀⡠⠀⠀⠁⣿⠃⢸⣿⠙⢺⣻⡗⠸⡇⠡⢸⣿⣰⠈⠀⠀⢘⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠉⢸⠁⠀⠀⠀⣿⠀⠘⣿⡄⠀⠁⠁⠀⠃⠀⠈⣿⠿⠀⠀⠀⠘⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠙⡇⠀⠀⠀⠀⠀⠀⢀⣏⣥⠀⠀⠀⢠⣤⠔⠀⠦⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        </div>
       </div>
     </div>
   </div>
@@ -338,10 +396,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     panels.forEach((panel, i) => {
       const depth = parseFloat(panel.getAttribute("data-depth")) || 1.2;
-
       const tiltX = Math.sin(t * (1.3 + depth * 0.4) + i) * (14 * depth);
       const tiltY = Math.cos(t * (1.1 + depth * 0.3) + i * 0.7) * (14 * depth);
-
       panel.style.transform =
         "perspective(1100px) rotateX(" + tiltX + "deg) rotateY(" + tiltY + "deg)";
     });
@@ -352,7 +408,6 @@ document.addEventListener("DOMContentLoaded", () => {
   autoFloat();
 });
 </script>
-
 
 </body>
 </html>
