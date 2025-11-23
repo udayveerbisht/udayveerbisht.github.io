@@ -1,176 +1,155 @@
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>juvie.</title>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>juvie.</title>
 
-        <meta property="og:title" content="juvie" />
-        <meta property="og:description" content="coming 2026." />
-        <meta property="og:url" content="https://juvie.me" />
-        <meta property="og:type" content="website" />
+    <meta property="og:title" content="juvie" />
+    <meta property="og:description" content="coming 2026." />
+    <meta property="og:url" content="https://juvie.me" />
+    <meta property="og:type" content="website" />
 
-        <link
-            href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&display=swap"
-            rel="stylesheet" />
-        <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
-        <style>
-            body {
-                overflow-x: hidden;
-                background: radial-gradient(circle at top, #200000 0%, #000 55%, #000 100%);
+    <style>
+        body {
+            overflow-x: hidden;
+            background: radial-gradient(circle at top, #200000 0%, #000 55%, #000 100%);
+            color: #ffffff;
+            font-family: "Cardo", serif;
+        }
+
+        .hidden-pre {
+            visibility: hidden;
+        }
+
+        @keyframes fadeDrop {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulseRedWhite {
+            0% {
                 color: #ffffff;
-                font-family: "Cardo", serif;
             }
-
-            @keyframes fadeDrop {
-                0% {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-
-                100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
+            50% {
+                color: #b30000;
             }
-
-            @keyframes pulseRedWhite {
-                0% {
-                    color: #ffffff;
-                }
-
-                50% {
-                    color: #b30000;
-                }
-
-                100% {
-                    color: #ffffff;
-                }
+            100% {
+                color: #ffffff;
             }
+        }
 
+        .ascii {
+            font-family: monospace;
+            white-space: pre;
+            line-height: 1.1;
+            opacity: 0;
+            animation: fadeDrop 0.8s ease forwards 0s, pulseRedWhite 6s ease-in-out infinite 0.8s;
+        }
+
+        @media (max-width: 480px) {
             .ascii {
-                font-family: monospace;
-                white-space: pre;
-                line-height: 1.1;
-                opacity: 0;
-                animation: fadeDrop 0.8s ease forwards 0s, pulseRedWhite 6s ease-in-out infinite 0.8s;
+                font-size: 7px;
             }
+        }
 
-            @media (max-width: 480px) {
-                .ascii {
-                    font-size: 7px;
-                }
+        @media (min-width: 481px) and (max-width: 768px) {
+            .ascii {
+                font-size: 9px;
             }
+        }
 
-            @media (min-width: 481px) and (max-width: 768px) {
-                .ascii {
-                    font-size: 9px;
-                }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .ascii {
+                font-size: 11px;
             }
+        }
 
-            @media (min-width: 769px) and (max-width: 1024px) {
-                .ascii {
-                    font-size: 11px;
-                }
+        @media (min-width: 1025px) {
+            .ascii {
+                font-size: 13px;
             }
+        }
 
-            @media (min-width: 1025px) {
-                .ascii {
-                    font-size: 13px;
-                }
-            }
+        .fade-letter {
+            display: inline-block;
+            opacity: 0;
+        }
 
-            .song {
-                display: flex;
-                justify-content: center;
-                gap: 12px;
-                font-size: 1.55rem;
-                opacity: 0;
-            }
+        .song {
+            display: flex;
+            gap: 12px;
+            font-size: 1.55rem;
+            justify-content: flex-start;
+            align-items: baseline;
+        }
 
-            .song:nth-child(1) {
-                animation: fadeDrop 0.8s ease forwards 0.4s, pulseRedWhite 6s ease-in-out infinite 1.2s;
-            }
+        .roman {
+            font-family: "Cinzel", serif;
+            letter-spacing: 0.1em;
+            min-width: 3.2ch;
+            text-align: right;
+        }
 
-            .song:nth-child(2) {
-                animation: fadeDrop 0.8s ease forwards 0.9s, pulseRedWhite 6s ease-in-out infinite 1.7s;
-            }
+        .titleword {
+            font-family: "UnifrakturMaguntia", cursive;
+            display: inline-block;
+        }
 
-            .song:nth-child(3) {
-                animation: fadeDrop 0.8s ease forwards 1.4s, pulseRedWhite 6s ease-in-out infinite 2.2s;
-            }
+        .coming2026 {
+            position: fixed;
+            right: 35px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #b30000;
+            font-family: "Cardo", serif;
+            letter-spacing: 0.15em;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 1rem;
+        }
 
-            .song:nth-child(4) {
-                animation: fadeDrop 0.8s ease forwards 1.9s, pulseRedWhite 6s ease-in-out infinite 2.7s;
-            }
-
-            .song:nth-child(5) {
-                animation: fadeDrop 0.8s ease forwards 2.4s, pulseRedWhite 6s ease-in-out infinite 3.2s;
-            }
-
-            .song:nth-child(6) {
-                animation: fadeDrop 0.8s ease forwards 2.9s, pulseRedWhite 6s ease-in-out infinite 3.7s;
-            }
-
-            .song:nth-child(7) {
-                animation: fadeDrop 0.8s ease forwards 3.4s, pulseRedWhite 6s ease-in-out infinite 4.2s;
-            }
-
-            .roman {
-                font-family: "Cinzel", serif;
-                letter-spacing: 0.1em;
-            }
-
-            .titleword {
-                font-family: "UnifrakturMaguntia", cursive;
-            }
-
-            .song:hover .titleword {
-                color: #b30000;
-                transition: color 0.25s ease;
-            }
-
+        @media (max-width: 768px) {
             .coming2026 {
-                position: fixed;
-                right: 35px;
-                top: 50%;
-                transform: translateY(-50%);
-                color: #b30000;
-                font-family: "Cardo", serif;
-                letter-spacing: 0.15em;
-                writing-mode: vertical-rl;
-                text-orientation: upright;
-                font-size: 1rem;
+                top: 10px;
+                right: 50%;
+                transform: translateX(50%);
+                writing-mode: horizontal-tb;
+                text-orientation: initial;
+                font-size: 0.95rem;
+                letter-spacing: 0.18em;
             }
+        }
+    </style>
+</head>
 
-            @media (max-width: 768px) {
-                .coming2026 {
-                    top: 10px;
-                    right: 50%;
-                    transform: translateX(50%);
-                    writing-mode: horizontal-tb;
-                    text-orientation: initial;
-                    font-size: 0.95rem;
-                    letter-spacing: 0.18em;
-                }
-            }
-        </style>
-    </head>
+<body>
 
-    <body>
+    <div class="coming2026">COMING 2026</div>
 
-        <div class="coming2026">COMING 2026</div>
+    <section class="min-h-screen flex items-center justify-center px-4 text-center">
+        <h1 id="title-main"
+            class="hidden-pre text-5xl md:text-6xl font-semibold tracking-wide"
+            style="color:#b30000;">
+            juvie
+        </h1>
+    </section>
 
-        <section class="min-h-screen flex items-center justify-center px-4 text-center">
-            <h1 class="text-5xl md:text-6xl font-semibold tracking-wide" style="color:#b30000;">
-                juvie
-            </h1>
-        </section>
+    <section class="py-16 px-4 flex justify-center">
+        <div class="ascii">
 
-        <section class="py-16 px-4 flex justify-center">
-            <div class="ascii">
            ;M;                                ,;m 
            ;M;.           ,      ,           ;SMM;
           ;;Mm;         ,;  ____  ;,         ;SMM;
@@ -212,30 +191,80 @@
             ;   ____      ;//'     "-   `,
             `+   .-/                 ".\\;
               `*" /                    "'
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="py-28 px-6">
-            <h2 class="text-center mb-16 text-3xl md:text-4xl tracking-widest"
-                style="font-family:'Cardo', serif; color:#e5e5e5; letter-spacing:0.25em;">
-                YUVENILE
-            </h2>
+    <section class="py-28 px-6">
+        <h2 id="yuvenile-title"
+            class="hidden-pre mb-16 text-3xl md:text-4xl tracking-widest text-center"
+            style="font-family:'Cardo', serif; color:#e5e5e5; letter-spacing:0.25em;">
+            YUVENILE
+        </h2>
 
-            <div class="max-w-xl mx-auto space-y-7 md:space-y-8 text-center">
-                <p class="song"><span class="roman">I.</span> <span class="titleword">intro</span></p>
-                <p class="song"><span class="roman">II.</span> <span class="titleword">romania</span></p>
-                <p class="song"><span class="roman">III.</span> <span class="titleword">bail</span></p>
-                <p class="song"><span class="roman">IV.</span> <span class="titleword">sex therapist</span></p>
-                <p class="song"><span class="roman">V.</span> <span class="titleword">988</span></p>
-                <p class="song"><span class="roman">VI.</span> <span class="titleword">arson</span></p>
-                <p class="song"><span class="roman">VII.</span> <span class="titleword">juvenile</span></p>
-            </div>
+        <div class="max-w-xl mx-auto space-y-7 md:space-y-8">
+            <p class="song"><span class="roman">I.</span> <span class="titleword hidden-pre">intro</span></p>
+            <p class="song"><span class="roman">II.</span> <span class="titleword hidden-pre">romania</span></p>
+            <p class="song"><span class="roman">III.</span> <span class="titleword hidden-pre">bail</span></p>
+            <p class="song"><span class="roman">IV.</span> <span class="titleword hidden-pre">sex therapy</span></p>
+            <p class="song"><span class="roman">V.</span> <span class="titleword hidden-pre">988</span></p>
+            <p class="song"><span class="roman">VI.</span> <span class="titleword hidden-pre">arson</span></p>
+            <p class="song"><span class="roman">VII.</span> <span class="titleword hidden-pre">juvenile</span></p>
+        </div>
 
-            <p class="text-center text-lg md:text-xl mt-16 italic" style="color:#ffffff;">
-                all roads lead to juvie
-            </p>
-        </section>
+        <p class="text-center text-lg md:text-xl mt-16 italic" style="color:#ffffff;">
+            all roads lead to juvie
+        </p>
+    </section>
 
-    </body>
+    <script>
+        function applyAnimations(span, fallDelay, enableColor, colorDelay) {
+            if (!enableColor) {
+                span.style.animationName = "fadeDrop";
+                span.style.animationDuration = "0.75s";
+                span.style.animationTimingFunction = "ease-out";
+                span.style.animationIterationCount = "1";
+                span.style.animationFillMode = "forwards";
+                span.style.animationDelay = fallDelay + "s";
+            } else {
+                span.style.animationName = "fadeDrop, pulseRedWhite";
+                span.style.animationDuration = "0.75s, 6s";
+                span.style.animationTimingFunction = "ease-out, ease-in-out";
+                span.style.animationIterationCount = "1, infinite";
+                span.style.animationFillMode = "forwards, none";
+                span.style.animationDelay = fallDelay + "s, " + colorDelay + "s";
+            }
+        }
 
-    </html>
+        function splitLetters(element, delayStart, fallStep, enableColor, colorRange) {
+            if (!element) return;
+
+            const text = element.textContent;
+            element.textContent = "";
+            element.style.visibility = "visible";
+            element.classList.remove("hidden-pre");
+
+            [...text].forEach((char, index) => {
+                const span = document.createElement("span");
+                span.textContent = char;
+                span.classList.add("fade-letter");
+
+                const fallDelay = delayStart + index * fallStep;
+                const colorDelay = enableColor ? Math.random() * colorRange : 0;
+
+                applyAnimations(span, fallDelay, enableColor, colorDelay);
+                element.appendChild(span);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            splitLetters(document.querySelector("#title-main"), 0, 0.14, false, 0);
+            splitLetters(document.querySelector("#yuvenile-title"), 0.8, 0.11, true, 3.5);
+
+            document.querySelectorAll(".titleword").forEach((el, index) => {
+                splitLetters(el, 1.3 + index * 0.35, 0.09, true, 4.5);
+            });
+        });
+    </script>
+
+</body>
+</html>
