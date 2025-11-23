@@ -1,263 +1,241 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>juvie.</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>juvie.</title>
 
-    <meta property="og:title" content="juvie" />
-    <meta property="og:description" content="coming 2026." />
-    <meta property="og:url" content="https://juvie.me" />
-    <meta property="og:type" content="website" />
+        <meta property="og:title" content="juvie" />
+        <meta property="og:description" content="coming 2026." />
+        <meta property="og:url" content="https://juvie.me" />
+        <meta property="og:type" content="website" />
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&display=swap"
-        rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&display=swap"
+            rel="stylesheet" />
+        <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        body {
-            overflow-x: hidden;
-            background: radial-gradient(circle at top, #200000 0%, #000 55%, #000 100%);
-            color: #ffffff;
-            font-family: "Cardo", serif;
-        }
+        <style>
+            body {
+                overflow-x: hidden;
+                background: radial-gradient(circle at top, #200000 0%, #000 55%, #000 100%);
+                color: #ffffff;
+                font-family: "Cardo", serif;
+            }
 
-        @keyframes fadeDrop {
-            0% {
+            @keyframes fadeDrop {
+                0% {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes pulseRedWhite {
+                0% {
+                    color: #ffffff;
+                }
+
+                50% {
+                    color: #b30000;
+                }
+
+                100% {
+                    color: #ffffff;
+                }
+            }
+
+            .ascii {
+                font-family: monospace;
+                white-space: pre;
+                line-height: 1.1;
                 opacity: 0;
-                transform: translateY(-10px);
+                animation: fadeDrop 0.8s ease forwards 0s, pulseRedWhite 6s ease-in-out infinite 0.8s;
             }
 
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulseRedWhite {
-            0% {
-                color: #ffffff;
+            @media (max-width: 480px) {
+                .ascii {
+                    font-size: 7px;
+                }
             }
 
-            50% {
+            @media (min-width: 481px) and (max-width: 768px) {
+                .ascii {
+                    font-size: 9px;
+                }
+            }
+
+            @media (min-width: 769px) and (max-width: 1024px) {
+                .ascii {
+                    font-size: 11px;
+                }
+            }
+
+            @media (min-width: 1025px) {
+                .ascii {
+                    font-size: 13px;
+                }
+            }
+
+            .song {
+                display: flex;
+                justify-content: center;
+                gap: 12px;
+                font-size: 1.55rem;
+                opacity: 0;
+            }
+
+            .song:nth-child(1) {
+                animation: fadeDrop 0.8s ease forwards 0.4s, pulseRedWhite 6s ease-in-out infinite 1.2s;
+            }
+
+            .song:nth-child(2) {
+                animation: fadeDrop 0.8s ease forwards 0.9s, pulseRedWhite 6s ease-in-out infinite 1.7s;
+            }
+
+            .song:nth-child(3) {
+                animation: fadeDrop 0.8s ease forwards 1.4s, pulseRedWhite 6s ease-in-out infinite 2.2s;
+            }
+
+            .song:nth-child(4) {
+                animation: fadeDrop 0.8s ease forwards 1.9s, pulseRedWhite 6s ease-in-out infinite 2.7s;
+            }
+
+            .song:nth-child(5) {
+                animation: fadeDrop 0.8s ease forwards 2.4s, pulseRedWhite 6s ease-in-out infinite 3.2s;
+            }
+
+            .song:nth-child(6) {
+                animation: fadeDrop 0.8s ease forwards 2.9s, pulseRedWhite 6s ease-in-out infinite 3.7s;
+            }
+
+            .song:nth-child(7) {
+                animation: fadeDrop 0.8s ease forwards 3.4s, pulseRedWhite 6s ease-in-out infinite 4.2s;
+            }
+
+            .roman {
+                font-family: "Cinzel", serif;
+                letter-spacing: 0.1em;
+            }
+
+            .titleword {
+                font-family: "UnifrakturMaguntia", cursive;
+            }
+
+            .song:hover .titleword {
                 color: #b30000;
+                transition: color 0.25s ease;
             }
 
-            100% {
-                color: #ffffff;
-            }
-        }
-
-        .ascii {
-            font-family: monospace;
-            white-space: pre;
-            line-height: 1.1;
-            opacity: 0;
-            animation: fadeDrop 0.8s ease forwards 0s, pulseRedWhite 6s ease-in-out infinite 0.8s;
-        }
-
-        @media (max-width: 480px) {
-            .ascii {
-                font-size: 7px;
-            }
-        }
-
-        @media (min-width: 481px) and (max-width: 768px) {
-            .ascii {
-                font-size: 9px;
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .ascii {
-                font-size: 11px;
-            }
-        }
-
-        @media (min-width: 1025px) {
-            .ascii {
-                font-size: 13px;
-            }
-        }
-
-        .song {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            font-size: 1.55rem;
-            opacity: 0;
-        }
-
-        .song:nth-child(1) {
-            animation: fadeDrop 0.8s ease forwards 0.4s, pulseRedWhite 6s ease-in-out infinite 1.2s;
-        }
-
-        .song:nth-child(2) {
-            animation: fadeDrop 0.8s ease forwards 0.9s, pulseRedWhite 6s ease-in-out infinite 1.7s;
-        }
-
-        .song:nth-child(3) {
-            animation: fadeDrop 0.8s ease forwards 1.4s, pulseRedWhite 6s ease-in-out infinite 2.2s;
-        }
-
-        .song:nth-child(4) {
-            animation: fadeDrop 0.8s ease forwards 1.9s, pulseRedWhite 6s ease-in-out infinite 2.7s;
-        }
-
-        .song:nth-child(5) {
-            animation: fadeDrop 0.8s ease forwards 2.4s, pulseRedWhite 6s ease-in-out infinite 3.2s;
-        }
-
-        .song:nth-child(6) {
-            animation: fadeDrop 0.8s ease forwards 2.9s, pulseRedWhite 6s ease-in-out infinite 3.7s;
-        }
-
-        .song:nth-child(7) {
-            animation: fadeDrop 0.8s ease forwards 3.4s, pulseRedWhite 6s ease-in-out infinite 4.2s;
-        }
-
-        .roman {
-            font-family: "Cinzel", serif;
-            letter-spacing: 0.1em;
-        }
-
-        .titleword {
-            font-family: "UnifrakturMaguntia", cursive;
-        }
-
-        .song:hover .titleword {
-            color: #b30000;
-            transition: color 0.25s ease;
-        }
-
-        .coming2026 {
-            position: fixed;
-            right: 35px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #b30000;
-            font-family: "Cardo", serif;
-            letter-spacing: 0.15em;
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            font-size: 1rem;
-        }
-
-        @media (max-width: 768px) {
             .coming2026 {
-                top: 10px;
-                right: 50%;
-                transform: translateX(50%);
-                writing-mode: horizontal-tb;
-                text-orientation: initial;
-                font-size: 0.95rem;
-                letter-spacing: 0.18em;
+                position: fixed;
+                right: 35px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #b30000;
+                font-family: "Cardo", serif;
+                letter-spacing: 0.15em;
+                writing-mode: vertical-rl;
+                text-orientation: upright;
+                font-size: 1rem;
             }
-        }
-    </style>
-</head>
 
-<body>
+            @media (max-width: 768px) {
+                .coming2026 {
+                    top: 10px;
+                    right: 50%;
+                    transform: translateX(50%);
+                    writing-mode: horizontal-tb;
+                    text-orientation: initial;
+                    font-size: 0.95rem;
+                    letter-spacing: 0.18em;
+                }
+            }
+        </style>
+    </head>
 
-    <div class="coming2026">COMING 2026</div>
+    <body>
 
-    <section class="min-h-screen flex items-center justify-center px-4 text-center">
-        <h1 class="text-5xl md:text-6xl font-semibold tracking-wide" style="color:#b30000;">
-            juvie
-        </h1>
-    </section>
+        <div class="coming2026">COMING 2026</div>
 
-    <section class="py-16 px-4 flex justify-center">
-        <div class="ascii">
-                      _..._
-                     /MMMMM\
-                    (I8H#H8I)
-                    (I8H#H8I)
-                     \WWWWW/
-                      I._.I
-                      I._.I
-                      I._.I
-                      I._.I
-                      I._.I
-                      I._.I
-                      I._.I
-                      I.,.I
-                     / /#\ \
-                   .dH# # #Hb.
-               _.~d#XXP I 7XX#b~,_
-            _.dXV^XP^ Y X Y ^7X^VXb._
-           /AP^   \PY   Y   Y7/   ^VA\
-          /8/      \PP  I  77/      \8\
-         /J/        IV     VI        \L\
-         L|         |  \ /  |         |J
-         V          |  | |  |          V
-                    |  | |  |
-                    |  | |  |
-                    |  | |  |
-                    |  | |  |
- _                  |  | |  |                  _
-( \                 |  | |  |                 / )
- \ \                |  | |  |                / /
-('\ \               |  | |  |               / /`)
- \ \ \              |  | |  |              / / /
-('\ \ \             |  | |  |             / / /`)
- \ \ \ )            |  | |  |            ( / / /
-('\ \( )            |  | |  |            ( )/ /`)
- \ \ ( |            |  | |  |            | ) / /
-  \ \( |            |  | |  |            | )/ /
-   \ ( |            |  | |  |            | ) /
-    \( |            |   Y   |            | )/
-     | |            |   |   |            | |
-     J | ___...~~--'|   |   |`--~~...___ | L
-     >-+<...___     |   |   |     ___...>+-<
-    /     __   `--~.L___L___J.~--'   __     \
-    K    /  ` --.     d===b     .-- '  \    H
-    \_._/        \   // I \\   /        \_._/
-      `--~.._     \__\\ I //__/     _..~--'
-             `--~~..____ ____..~~--'
-                    |   T   |
-                    |   |   |
-                    |   |   |
-                    |   |   |
-                    |   |   |
-                    |   |   |
-                    |   |   |
-                    |   |   |
-                    |   |   |
-                    |   |   |
-                    |   |   |
-                    |   |   |
-                    |   |   |
-                    I   '   I
-                     \     /
-                      \   /
-                       \ /
-        </div>
-    </section>
+        <section class="min-h-screen flex items-center justify-center px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-semibold tracking-wide" style="color:#b30000;">
+                juvie
+            </h1>
+        </section>
 
-    <section class="py-28 px-6">
-        <h2 class="text-center mb-16 text-3xl md:text-4xl tracking-widest"
-            style="font-family:'Cardo', serif; color:#e5e5e5; letter-spacing:0.25em;">
-            YUVENILE
-        </h2>
+        <section class="py-16 px-4 flex justify-center">
+            <div class="ascii">
+         ' ;M;                                ,;m `
+           ;M;.           ,      ,           ;SMM;
+          ;;Mm;         ,;  ____  ;,         ;SMM;
+         ;;;MM;        ; (.MMMMMM.) ;       ,SSMM;;
+       ,;;;mMp'        l  ';mmmm;/  j       SSSMM;;
+     .;;;;;MM;         .\,.mmSSSm,,/,      ,SSSMM;;;
+    ;;;;;;mMM;        .;MMmSSSSSSSmMm;     ;MSSMM;;;;
+   ;;;;;;mMSM;     ,_ ;MMmS;;;;;;mmmM;  -,;MMMMMMm;;;;
+  ;;;;;;;MMSMM;     \"*;M;( ( '') );m;*"/ ;MMMMMM;;;;;,
+ .;;;;;;mMMSMM;      \(@;! _     _ !;@)/ ;MMMMMMMM;;;;;,
+ ;;;;;;;MMSSSM;       ;,;.*o*> <*o*.;m; ;MMMMMMMMM;;;;;;,
+.;;;;;;;MMSSSMM;     ;Mm;           ;M;,MMMMMMMMMMm;;;;;;.
+;;;;;;;mmMSSSMMMM,   ;Mm;,   '-    ,;M;MMMMMMMSMMMMm;;;;;;;
+;;;;;;;MMMSSSMMMMMMMm;Mm;;,  ___  ,;SmM;MMMMMMSSMMMM;;;;;;;;
+;;'";;;MMMSSSSMMMMMM;MMmS;;,  "  ,;SmMM;MMMMMMSSMMMM;;;;;;;;.
+!   ;;;MMMSSSSSMMMMM;MMMmSS;;._.;;SSmMM;MMMMMMSSMMMM;;;;;;;;;
+    ;;;;*MSSSSSSMMMP;Mm*"'q;'   `;p*"*M;MMMMMSSSSMMM;;;;;;;;;
+    ';;;  ;SS*SSM*M;M;'     `-.        ;;MMMMSSSSSMM;;;;;;;;;,
+     ;;;. ;P  `q; qMM.                 ';MMMMSSSSSMp' ';;;;;;;
+     ;;;; ',    ; .mm!     \.   `.   /  ;MMM' `qSS'    ';;;;;;
+     ';;;       ' mmS';     ;     ,  `. ;'M'   `S       ';;;;;
+      `;;.        mS;;`;    ;     ;    ;M,!     '  juvie   ';;;;
+       ';;       .mS;;, ;   '. o  ;   oMM;                ;;;;
+        ';;      MMmS;; `,   ;._.' -_.'MM;                 ;;;
+         `;;     MMmS;;; ;   ;      ;  MM;                 ;;;
+           `'.   'MMmS;; `;) ',    .' ,M;'                 ;;;
+              \    '' ''; ;   ;    ;  ;'                   ;;
+               ;        ; `,  ;    ;  ;                   ;;
+                        |. ;  ; (. ;  ;      _.-.         ;;
+           .-----..__  /   ;  ;   ;' ;\  _.-" .- `.      ;;
+         ;' ___      `*;   `; ';  ;  ; ;'  .-'    :      ;
+         ;     """*-.   `.  ;  ;  ;  ; ' ,'      /       |
+         ',          `-_    (.--',`--'..'      .'        ',
+           `-_          `*-._'.\\\;||\\)     ,'
+              `"*-._        "*`-ll_ll'l    ,'
+                 ,==;*-._           "-.  .'
+              _-'    "*-=`*;-._        ;'
+            ."            ;'  ;"*-.    `
+            ;   ____      ;//'     "-   `,
+            `+   .-/                 ".\\;
+              `*" /                    "'
+            </div>
+        </section>
 
-        <div class="max-w-xl mx-auto space-y-7 md:space-y-8 text-center">
-            <p class="song"><span class="roman">I.</span> <span class="titleword">intro</span></p>
-            <p class="song"><span class="roman">II.</span> <span class="titleword">romania</span></p>
-            <p class="song"><span class="roman">III.</span> <span class="titleword">bail</span></p>
-            <p class="song"><span class="roman">IV.</span> <span class="titleword">sex therapist</span></p>
-            <p class="song"><span class="roman">V.</span> <span class="titleword">988</span></p>
-            <p class="song"><span class="roman">VI.</span> <span class="titleword">arson</span></p>
-            <p class="song"><span class="roman">VII.</span> <span class="titleword">juvenile</span></p>
-        </div>
+        <section class="py-28 px-6">
+            <h2 class="text-center mb-16 text-3xl md:text-4xl tracking-widest"
+                style="font-family:'Cardo', serif; color:#e5e5e5; letter-spacing:0.25em;">
+                YUVENILE
+            </h2>
 
-        <p class="text-center text-lg md:text-xl mt-16 italic" style="color:#ffffff;">
-            all roads lead to juvie
-        </p>
-    </section>
+            <div class="max-w-xl mx-auto space-y-7 md:space-y-8 text-center">
+                <p class="song"><span class="roman">I.</span> <span class="titleword">intro</span></p>
+                <p class="song"><span class="roman">II.</span> <span class="titleword">romania</span></p>
+                <p class="song"><span class="roman">III.</span> <span class="titleword">bail</span></p>
+                <p class="song"><span class="roman">IV.</span> <span class="titleword">sex therapist</span></p>
+                <p class="song"><span class="roman">V.</span> <span class="titleword">988</span></p>
+                <p class="song"><span class="roman">VI.</span> <span class="titleword">arson</span></p>
+                <p class="song"><span class="roman">VII.</span> <span class="titleword">juvenile</span></p>
+            </div>
 
-</body>
+            <p class="text-center text-lg md:text-xl mt-16 italic" style="color:#ffffff;">
+                all roads lead to juvie
+            </p>
+        </section>
 
-</html>
+    </body>
+
+    </html>
