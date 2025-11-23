@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>yuviejuvie</title>
+    <title>juvie.</title>
 
     <meta property="og:title" content="yuviejuvie" />
-    <meta property="og:description" content="work in progress." />
-    <meta property="og:image"
-        content="https://raw.githubusercontent.com/udayveerbisht/udayveerbisht.github.io/refs/heads/main/img.jpg" />
-    <meta property="og:type" content="website" />
+    <meta property="og:description" content="soon." />
+    <meta property="og:image" content="" />
     <meta property="og:url" content="https://juvie.me" />
+    <meta property="og:type" content="website" />
 
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English&display=swap"
         rel="stylesheet">
@@ -20,22 +19,147 @@
     <style>
         body {
             font-family: 'UnifrakturMaguntia', serif;
+            overflow-x: hidden;
+            background: radial-gradient(circle at top, #111 0, #000 45%, #000 100%);
+            color: #f5f5f5;
         }
 
         .sub {
             font-family: 'IM Fell English', serif;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.25em;
+        }
+
+        .title {
+            letter-spacing: 0.08em;
+        }
+
+        .ascii {
+            font-family: monospace;
+            white-space: pre;
+            line-height: 1.1;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 480px) {
+            .ascii {
+                font-size: 7px;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .ascii {
+                font-size: 9px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .ascii {
+                font-size: 11px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .ascii {
+                font-size: 13px;
+            }
+        }
+
+        .song {
+            transition: color 0.25s ease;
+            color: #ffffff;
+        }
+
+        .song:hover {
+            color: #b30000;
+        }
+
+        .ep {
+            color: #d8d8d8;
         }
     </style>
 </head>
 
-<body class="bg-black flex flex-col items-center justify-center min-h-screen text-white">
-    <img src="https://raw.githubusercontent.com/udayveerbisht/udayveerbisht.github.io/refs/heads/main/img.jpg"
-        class="w-40 h-40 object-cover mb-6" />
+<body class="bg-black">
 
-    <h1 class="text-5xl tracking-wide mb-3">yuviejuvie</h1>
+    <section class="min-h-screen flex items-center justify-center px-4">
+        <h1 class="title text-6xl md:text-7xl text-center">
+            yuviejuvie
+        </h1>
+    </section>
 
-    <p class="sub text-neutral-600 text-xs">work in progress</p>
+    <section class="py-16 px-4 flex justify-center">
+        <div class="ascii">
+                             _..._
+                           .'.   .'.
+                          (   : :   )
+                           '._:_:_.'
+                             (:::)
+                             (:::)
+                             (:::)
+                             (:::)
+                             (:::)
+                             (:::)
+                             (:::)
+                             (:::)
+                             /:::\
+                            /     \
+                          .'       '.
+                      _.-'\\  (*)  //'-._
+                   .-'__.--\\     //--.__'-.
+                 .'.-'     |\\   //|     '-.'.
+               .'.'        | \\ // |        '.'.
+              /.'          || \*/  |          '.\
+             /'            |'  |  ||            '\
+(`-._(`-._(`-._..          ||  |  '|          .._.-')_.-')_.-')
+ )    )    )   ||          |   |  ||          ||   (    (    (
+(`-._(`-._( `._||          |'  |  ||          ||_.-')_.-')_.-')
+ )    )    )   ||          |   |   |          ||   (    (    (
+(`-._(`-._(`-._||          ||  |  '|          ||_.-')_.-')_.-')
+ )    )    )   ||          |'  |  ||          ||   (    (    (
+(`-._(`-._( `._||          ||  |   |          ||_.-')_.-')_.-')
+ )    )    )   ||          |   |  ||          ||   (    (    (
+ `-._.`-._.`-._||   _.-- - |'  |  '| - --._   ||_.-'._.-'._.-'
+               ||.'  .    _||  |  ||_    .  '.||
+               |(     `---..._____...---'     )|
+               \   '. _.-.  . - - .  .-._ .'   /
+                `-._       '._ * _.'       _.-'
+                    `---....__ _ __....---`
+                           |   :  ||
+                           ||  |  '|
+                           |'  |  ||
+                           ||  |  '|
+                           |   |  ||
+                           |'  |  '|
+                           |'     '|
+                            \.   ./
+                             \. ./
+                              \./
+                               V
+        </div>
+    </section>
+
+    <section class="py-24 px-6">
+
+        <h2 class="text-center sub text-sm tracking-widest mb-12 ep">
+            YUVENILE.
+        </h2>
+
+        <div class="max-w-xl mx-auto space-y-6 text-xl text-center">
+            <p class="song">1. intro</p>
+            <p class="song">2. romania</p>
+            <p class="song">3. bail</p>
+            <p class="song">4. sex therapist</p>
+            <p class="song">5. 988</p>
+            <p class="song">6. arson</p>
+            <p class="song">7. juvenile</p>
+        </div>
+
+        <p class="text-center text-sm mt-10 italic" style="color:#a4a4a4;">
+            all roads lead to juvie
+        </p>
+
+    </section>
+
 </body>
 
 </html>
