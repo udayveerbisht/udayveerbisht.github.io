@@ -11,44 +11,31 @@
     <meta property="og:url" content="https://juvie.me" />
     <meta property="og:type" content="website" />
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         body {
-            overflow-x: hidden;
             background: radial-gradient(circle at top, #200000 0%, #000 55%, #000 100%);
             color: #ffffff;
             font-family: "Cardo", serif;
+            overflow-x: hidden;
         }
 
         .hidden-pre {
             visibility: hidden;
         }
 
-        @keyframes fadeDrop {
-            0% {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes drop {
+            0% { opacity: 0; transform: translateY(-22px); }
+            70% { opacity: 1; transform: translateY(3px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes pulseRedWhite {
-            0% {
-                color: #ffffff;
-            }
-            50% {
-                color: #b30000;
-            }
-            100% {
-                color: #ffffff;
-            }
+        @keyframes waveColor {
+            0% { color: #ffffff; }
+            50% { color: #b30000; }
+            100% { color: #ffffff; }
         }
 
         .ascii {
@@ -56,32 +43,13 @@
             white-space: pre;
             line-height: 1.1;
             opacity: 0;
-            animation: fadeDrop 0.8s ease forwards 0s, pulseRedWhite 6s ease-in-out infinite 0.8s;
+            animation: drop 0.8s ease forwards 0s, waveColor 6s ease-in-out infinite 0.8s;
         }
 
-        @media (max-width: 480px) {
-            .ascii {
-                font-size: 7px;
-            }
-        }
-
-        @media (min-width: 481px) and (max-width: 768px) {
-            .ascii {
-                font-size: 9px;
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .ascii {
-                font-size: 11px;
-            }
-        }
-
-        @media (min-width: 1025px) {
-            .ascii {
-                font-size: 13px;
-            }
-        }
+        @media (max-width: 480px) { .ascii { font-size: 7px; } }
+        @media (min-width: 481px) and (max-width: 768px) { .ascii { font-size: 9px; } }
+        @media (min-width: 769px) and (max-width: 1024px) { .ascii { font-size: 11px; } }
+        @media (min-width: 1025px) { .ascii { font-size: 13px; } }
 
         .fade-letter {
             display: inline-block;
@@ -93,12 +61,10 @@
             gap: 12px;
             font-size: 1.55rem;
             justify-content: flex-start;
-            align-items: baseline;
         }
 
         .roman {
             font-family: "Cinzel", serif;
-            letter-spacing: 0.1em;
             min-width: 3.2ch;
             text-align: right;
         }
@@ -114,10 +80,8 @@
             top: 50%;
             transform: translateY(-50%);
             color: #b30000;
-            font-family: "Cardo", serif;
             letter-spacing: 0.15em;
             writing-mode: vertical-rl;
-            text-orientation: upright;
             font-size: 1rem;
         }
 
@@ -127,9 +91,6 @@
                 right: 50%;
                 transform: translateX(50%);
                 writing-mode: horizontal-tb;
-                text-orientation: initial;
-                font-size: 0.95rem;
-                letter-spacing: 0.18em;
             }
         }
     </style>
@@ -139,10 +100,8 @@
 
     <div class="coming2026">COMING 2026</div>
 
-    <section class="min-h-screen flex items-center justify-center px-4 text-center">
-        <h1 id="title-main"
-            class="hidden-pre text-5xl md:text-6xl font-semibold tracking-wide"
-            style="color:#b30000;">
+    <section class="min-h-screen flex items-center justify-center px-4">
+        <h1 id="title-main" class="hidden-pre text-5xl md:text-6xl font-semibold tracking-wide" style="color:#b30000;">
             juvie
         </h1>
     </section>
@@ -190,13 +149,11 @@
             ."            ;'  ;"*-.    `
             ;   ____      ;//'     "-   `,
             `+   .-/                 ".\\;
-              `*" /                    "'
-        </div>
+              `*" /                    "' </div>
     </section>
 
     <section class="py-28 px-6">
-        <h2 id="yuvenile-title"
-            class="hidden-pre mb-16 text-3xl md:text-4xl tracking-widest text-center"
+        <h2 id="yuvenile-title" class="hidden-pre text-center mb-16 text-3xl md:text-4xl tracking-widest"
             style="font-family:'Cardo', serif; color:#e5e5e5; letter-spacing:0.25em;">
             YUVENILE
         </h2>
@@ -217,51 +174,38 @@
     </section>
 
     <script>
-        function applyAnimations(span, fallDelay, enableColor, colorDelay) {
-            if (!enableColor) {
-                span.style.animationName = "fadeDrop";
-                span.style.animationDuration = "0.75s";
-                span.style.animationTimingFunction = "ease-out";
-                span.style.animationIterationCount = "1";
-                span.style.animationFillMode = "forwards";
-                span.style.animationDelay = fallDelay + "s";
-            } else {
-                span.style.animationName = "fadeDrop, pulseRedWhite";
-                span.style.animationDuration = "0.75s, 6s";
-                span.style.animationTimingFunction = "ease-out, ease-in-out";
-                span.style.animationIterationCount = "1, infinite";
-                span.style.animationFillMode = "forwards, none";
-                span.style.animationDelay = fallDelay + "s, " + colorDelay + "s";
-            }
-        }
+        function letterFX(el, delayStart, fallStep, colorMode) {
+            if (!el) return;
+            const txt = el.textContent;
+            el.textContent = "";
+            el.style.visibility = "visible";
 
-        function splitLetters(element, delayStart, fallStep, enableColor, colorRange) {
-            if (!element) return;
-
-            const text = element.textContent;
-            element.textContent = "";
-            element.style.visibility = "visible";
-            element.classList.remove("hidden-pre");
-
-            [...text].forEach((char, index) => {
+            [...txt].forEach((ch, i) => {
                 const span = document.createElement("span");
-                span.textContent = char;
+                span.textContent = ch;
                 span.classList.add("fade-letter");
 
-                const fallDelay = delayStart + index * fallStep;
-                const colorDelay = enableColor ? Math.random() * colorRange : 0;
+                const dropDelay = delayStart + i * fallStep;
+                const waveDelay = colorMode ? i * 0.25 : 0;
 
-                applyAnimations(span, fallDelay, enableColor, colorDelay);
-                element.appendChild(span);
+                if (!colorMode) {
+                    span.style.animation = `drop .75s ease-out forwards ${dropDelay}s`;
+                } else {
+                    span.style.animation =
+                        `drop .75s ease-out forwards ${dropDelay}s,
+                         waveColor 6s ease-in-out infinite ${waveDelay}s`;
+                }
+
+                el.appendChild(span);
             });
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            splitLetters(document.querySelector("#title-main"), 0, 0.14, false, 0);
-            splitLetters(document.querySelector("#yuvenile-title"), 0.8, 0.11, true, 3.5);
+            letterFX(document.querySelector("#title-main"), 0, 0.14, false);
+            letterFX(document.querySelector("#yuvenile-title"), 0.8, 0.12, true);
 
             document.querySelectorAll(".titleword").forEach((el, index) => {
-                splitLetters(el, 1.3 + index * 0.35, 0.09, true, 4.5);
+                letterFX(el, 1.3 + index * 0.4, 0.10, true);
             });
         });
     </script>
