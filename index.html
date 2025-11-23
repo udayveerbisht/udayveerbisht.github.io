@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>juvie.</title>
+    <title>juvie</title>
 
     <meta property="og:title" content="juvie" />
     <meta property="og:description" content="coming 2026." />
     <meta property="og:url" content="https://juvie.me" />
     <meta property="og:type" content="website" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+        rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -27,15 +29,34 @@
         }
 
         @keyframes drop {
-            0% { opacity: 0; transform: translateY(-22px); }
-            70% { opacity: 1; transform: translateY(3px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(-22px);
+            }
+
+            70% {
+                opacity: 1;
+                transform: translateY(3px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes waveColor {
-            0% { color: #ffffff; }
-            50% { color: #b30000; }
-            100% { color: #ffffff; }
+            0% {
+                color: #ffffff;
+            }
+
+            50% {
+                color: #b30000;
+            }
+
+            100% {
+                color: #ffffff;
+            }
         }
 
         .ascii {
@@ -46,10 +67,29 @@
             animation: drop 0.8s ease forwards 0s, waveColor 6s ease-in-out infinite 0.8s;
         }
 
-        @media (max-width: 480px) { .ascii { font-size: 7px; } }
-        @media (min-width: 481px) and (max-width: 768px) { .ascii { font-size: 9px; } }
-        @media (min-width: 769px) and (max-width: 1024px) { .ascii { font-size: 11px; } }
-        @media (min-width: 1025px) { .ascii { font-size: 13px; } }
+        @media (max-width: 480px) {
+            .ascii {
+                font-size: 7px;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .ascii {
+                font-size: 9px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .ascii {
+                font-size: 11px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .ascii {
+                font-size: 13px;
+            }
+        }
 
         .fade-letter {
             display: inline-block;
@@ -72,6 +112,13 @@
         .titleword {
             font-family: "UnifrakturMaguntia", cursive;
             display: inline-block;
+        }
+
+        /* NEW unique font only for sex therapy */
+        .special-font {
+            font-family: "Cormorant Garamond", serif;
+            font-weight: 500;
+            letter-spacing: 0.03em;
         }
 
         .coming2026 {
@@ -149,28 +196,36 @@
             ."            ;'  ;"*-.    `
             ;   ____      ;//'     "-   `,
             `+   .-/                 ".\\;
-              `*" /                    "' </div>
+              `*" /                    "'
+        </div>
     </section>
 
-    <section class="py-28 px-6">
-        <h2 id="yuvenile-title" class="hidden-pre text-center mb-16 text-3xl md:text-4xl tracking-widest"
-            style="font-family:'Cardo', serif; color:#e5e5e5; letter-spacing:0.25em;">
-            YUVENILE
-        </h2>
+    <section class=" py-28 px-6">
+                <h2 id="yuvenile-title" class="hidden-pre text-center mb-16 text-3xl md:text-4xl tracking-widest"
+                    style="font-family:'Cardo', serif; color:#e5e5e5; letter-spacing:0.25em;">
+                    YUVENILE
+                </h2>
 
-        <div class="max-w-xl mx-auto space-y-7 md:space-y-8">
-            <p class="song"><span class="roman">I.</span> <span class="titleword hidden-pre">intro</span></p>
-            <p class="song"><span class="roman">II.</span> <span class="titleword hidden-pre">romania</span></p>
-            <p class="song"><span class="roman">III.</span> <span class="titleword hidden-pre">bail</span></p>
-            <p class="song"><span class="roman">IV.</span> <span class="titleword hidden-pre">sex therapy</span></p>
-            <p class="song"><span class="roman">V.</span> <span class="titleword hidden-pre">988</span></p>
-            <p class="song"><span class="roman">VI.</span> <span class="titleword hidden-pre">arson</span></p>
-            <p class="song"><span class="roman">VII.</span> <span class="titleword hidden-pre">juvenile</span></p>
-        </div>
+                <div class="max-w-xl mx-auto space-y-7 md:space-y-8">
+                    <p class="song"><span class="roman">I.</span> <span class="titleword hidden-pre">intro</span></p>
+                    <p class="song"><span class="roman">II.</span> <span class="titleword hidden-pre">romania</span></p>
+                    <p class="song"><span class="roman">III.</span> <span class="titleword hidden-pre">bail</span></p>
 
-        <p class="text-center text-lg md:text-xl mt-16 italic" style="color:#ffffff;">
-            all roads lead to juvie
-        </p>
+                    <!-- SEX THERAPY WITH UNIQUE FONT -->
+                    <p class="song">
+                        <span class="roman">IV.</span>
+                        <span class="titleword special-font hidden-pre">sex therapy</span>
+                    </p>
+
+                    <p class="song"><span class="roman">V.</span> <span class="titleword hidden-pre">988</span></p>
+                    <p class="song"><span class="roman">VI.</span> <span class="titleword hidden-pre">arson</span></p>
+                    <p class="song"><span class="roman">VII.</span> <span class="titleword hidden-pre">juvenile</span>
+                    </p>
+                </div>
+
+                <p class="text-center text-lg md:text-xl mt-16 italic" style="color:#ffffff;">
+                    all roads lead to juvie
+                </p>
     </section>
 
     <script>
@@ -182,7 +237,10 @@
 
             [...txt].forEach((ch, i) => {
                 const span = document.createElement("span");
-                span.textContent = ch;
+
+                if (ch === " ") span.innerHTML = "&nbsp;";
+                else span.textContent = ch;
+
                 span.classList.add("fade-letter");
 
                 const dropDelay = delayStart + i * fallStep;
@@ -211,4 +269,5 @@
     </script>
 
 </body>
+
 </html>
