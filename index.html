@@ -4,40 +4,58 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>juvie</title>
+    <title>juvie.</title>
 
-    <meta property="og:title" content="yuviejuvie" />
-    <meta property="og:description" content="soon." />
-    <meta property="og:image" content="" />
+    <meta property="og:title" content="juvie" />
+    <meta property="og:description" content="coming 2026." />
     <meta property="og:url" content="https://juvie.me" />
     <meta property="og:type" content="website" />
 
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English&display=swap"
-        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&display=swap"
+        rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         body {
-            font-family: 'UnifrakturMaguntia', serif;
             overflow-x: hidden;
-            background: radial-gradient(circle at top, #111 0, #000 45%, #000 100%);
-            color: #f5f5f5;
+            background: radial-gradient(circle at top, #200000 0%, #000 55%, #000 100%);
+            color: #ffffff;
+            font-family: "Cardo", serif;
         }
 
-        .sub {
-            font-family: 'IM Fell English', serif;
-            letter-spacing: 0.25em;
+        @keyframes fadeDrop {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .title {
-            letter-spacing: 0.08em;
+        @keyframes pulseRedWhite {
+            0% {
+                color: #ffffff;
+            }
+
+            50% {
+                color: #b30000;
+            }
+
+            100% {
+                color: #ffffff;
+            }
         }
 
         .ascii {
             font-family: monospace;
             white-space: pre;
             line-height: 1.1;
-            opacity: 0.9;
+            opacity: 0;
+            animation: fadeDrop 0.8s ease forwards 0s, pulseRedWhite 6s ease-in-out infinite 0.8s;
         }
 
         @media (max-width: 480px) {
@@ -65,25 +83,89 @@
         }
 
         .song {
-            transition: color 0.25s ease;
-            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            font-size: 1.55rem;
+            opacity: 0;
         }
 
-        .song:hover {
+        .song:nth-child(1) {
+            animation: fadeDrop 0.8s ease forwards 0.4s, pulseRedWhite 6s ease-in-out infinite 1.2s;
+        }
+
+        .song:nth-child(2) {
+            animation: fadeDrop 0.8s ease forwards 0.9s, pulseRedWhite 6s ease-in-out infinite 1.7s;
+        }
+
+        .song:nth-child(3) {
+            animation: fadeDrop 0.8s ease forwards 1.4s, pulseRedWhite 6s ease-in-out infinite 2.2s;
+        }
+
+        .song:nth-child(4) {
+            animation: fadeDrop 0.8s ease forwards 1.9s, pulseRedWhite 6s ease-in-out infinite 2.7s;
+        }
+
+        .song:nth-child(5) {
+            animation: fadeDrop 0.8s ease forwards 2.4s, pulseRedWhite 6s ease-in-out infinite 3.2s;
+        }
+
+        .song:nth-child(6) {
+            animation: fadeDrop 0.8s ease forwards 2.9s, pulseRedWhite 6s ease-in-out infinite 3.7s;
+        }
+
+        .song:nth-child(7) {
+            animation: fadeDrop 0.8s ease forwards 3.4s, pulseRedWhite 6s ease-in-out infinite 4.2s;
+        }
+
+        .roman {
+            font-family: "Cinzel", serif;
+            letter-spacing: 0.1em;
+        }
+
+        .titleword {
+            font-family: "UnifrakturMaguntia", cursive;
+        }
+
+        .song:hover .titleword {
             color: #b30000;
+            transition: color 0.25s ease;
         }
 
-        .ep {
-            color: #d8d8d8;
+        .coming2026 {
+            position: fixed;
+            right: 35px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #b30000;
+            font-family: "Cardo", serif;
+            letter-spacing: 0.15em;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .coming2026 {
+                top: 10px;
+                right: 50%;
+                transform: translateX(50%);
+                writing-mode: horizontal-tb;
+                text-orientation: initial;
+                font-size: 0.95rem;
+                letter-spacing: 0.18em;
+            }
         }
     </style>
 </head>
 
-<body class="bg-black">
+<body>
 
-    <section class="min-h-screen flex items-center justify-center px-4">
-        <h1 class="title text-6xl md:text-7xl text-center">
-            yuviejuvie
+    <div class="coming2026">COMING 2026</div>
+
+    <section class="min-h-screen flex items-center justify-center px-4 text-center">
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-wide" style="color:#b30000;">
+            juvie
         </h1>
     </section>
 
@@ -155,26 +237,25 @@
         </div>
     </section>
 
-    <section class="py-24 px-6">
-
-        <h2 class="text-center sub text-sm tracking-widest mb-12 ep">
-            YUVENILE.
+    <section class="py-28 px-6">
+        <h2 class="text-center mb-16 text-3xl md:text-4xl tracking-widest"
+            style="font-family:'Cardo', serif; color:#e5e5e5; letter-spacing:0.25em;">
+            YUVENILE
         </h2>
 
-        <div class="max-w-xl mx-auto space-y-6 text-xl text-center">
-            <p class="song">1. intro</p>
-            <p class="song">2. romania</p>
-            <p class="song">3. bail</p>
-            <p class="song">4. sex therapist</p>
-            <p class="song">5. 988</p>
-            <p class="song">6. arson</p>
-            <p class="song">7. juvenile</p>
+        <div class="max-w-xl mx-auto space-y-7 md:space-y-8 text-center">
+            <p class="song"><span class="roman">I.</span> <span class="titleword">intro</span></p>
+            <p class="song"><span class="roman">II.</span> <span class="titleword">romania</span></p>
+            <p class="song"><span class="roman">III.</span> <span class="titleword">bail</span></p>
+            <p class="song"><span class="roman">IV.</span> <span class="titleword">sex therapist</span></p>
+            <p class="song"><span class="roman">V.</span> <span class="titleword">988</span></p>
+            <p class="song"><span class="roman">VI.</span> <span class="titleword">arson</span></p>
+            <p class="song"><span class="roman">VII.</span> <span class="titleword">juvenile</span></p>
         </div>
 
-        <p class="text-center text-sm mt-10 italic" style="color:#a4a4a4;">
+        <p class="text-center text-lg md:text-xl mt-16 italic" style="color:#ffffff;">
             all roads lead to juvie
         </p>
-
     </section>
 
 </body>
