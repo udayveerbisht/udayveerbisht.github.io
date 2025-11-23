@@ -2,412 +2,393 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>juvie</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>juvie</title>
 
-<meta property="og:title" content="juvie" />
-<meta property="og:description" content="coming 2026." />
-<meta property="og:url" content="https://juvie.me" />
-<meta property="og:type" content="website" />
+  <meta property="og:title" content="juvie" />
+  <meta property="og:description" content="coming 2026." />
+  <meta property="og:url" content="https://juvie.me" />
+  <meta property="og:type" content="website" />
 
-<link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
-body {
-  margin: 0;
-  background: radial-gradient(circle at top, #180000 0%, #050000 55%, #000 100%);
-  color: #ffffff;
-  font-family: "Cardo", serif;
-  overflow-x: hidden;
-  min-height: 100vh;
-  display: grid;
-  justify-items: center;
-  align-items: start;
-  padding-bottom: 80px;
-  position: relative;
-}
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #180000 0%, #050000 55%, #000 100%);
+      color: #ffffff;
+      font-family: "Cardo", serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: grid;
+      justify-items: center;
+      align-items: start;
+      padding-bottom: 80px;
+      position: relative;
+    }
 
-.fog-layer {
-  position: fixed;
-  inset: -40%;
-  background:
-    radial-gradient(circle at 20% 0%, rgba(255, 0, 0, 0.27), transparent 55%),
-    radial-gradient(circle at 80% 100%, rgba(200, 0, 0, 0.33), transparent 60%),
-    radial-gradient(circle at 50% 40%, rgba(255, 80, 80, 0.16), transparent 60%);
-  opacity: 0.95;
-  mix-blend-mode: screen;
-  filter: blur(7px);
-  animation: fogShift 40s linear infinite alternate;
-  pointer-events: none;
-  z-index: -2;
-}
+    /* fog + lighting */
+    .fog-layer {
+      position: fixed;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255, 0, 0, 0.27), transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(200, 0, 0, 0.33), transparent 60%),
+        radial-gradient(circle at 50% 40%, rgba(255, 80, 80, 0.16), transparent 60%);
+      opacity: 0.95;
+      mix-blend-mode: screen;
+      filter: blur(7px);
+      animation: fogShift 40s linear infinite alternate;
+      pointer-events: none;
+      z-index: -2;
+    }
 
-.vignette {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, transparent 0%, transparent 45%, rgba(0,0,0,0.78) 100%);
-  pointer-events: none;
-  z-index: -1;
-}
+    .vignette {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle, transparent 0%, transparent 45%, rgba(0, 0, 0, 0.8) 100%);
+      pointer-events: none;
+      z-index: -1;
+    }
 
-@keyframes fogShift {
-  0% { transform: translate3d(-40px,20px,0) scale(1.08); }
-  50% { transform: translate3d(25px,-30px,0) scale(1.03); }
-  100% { transform: translate3d(40px,35px,0) scale(1.12); }
-}
+    @keyframes fogShift {
+      0% {
+        transform: translate3d(-40px, 20px, 0) scale(1.08);
+      }
 
-.center {
-  width: 100%;
-  display: grid;
-  place-items: center;
-}
+      50% {
+        transform: translate3d(25px, -30px, 0) scale(1.03);
+      }
 
-.panel {
-  background: rgba(10,0,0,0.72);
-  border-radius: 46px;
-  backdrop-filter: blur(20px) saturate(145%);
-  border: 1px solid rgba(255,0,0,0.2);
-  box-shadow:
-    0 18px 40px rgba(0,0,0,0.9),
-    0 0 60px rgba(255,0,0,0.28),
-    inset 0 0 26px rgba(140,0,0,0.38);
-  padding: 50px 32px;
-  max-width: 900px;
-  width: 92%;
-  margin-bottom: 56px;
-  position: relative;
-  overflow: hidden;
-  transform-style: preserve-3d;
-}
+      100% {
+        transform: translate3d(40px, 35px, 0) scale(1.12);
+      }
+    }
 
-.panel-inner {
-  position: relative;
-  z-index: 1;
-}
+    /* panels */
+    .center {
+      width: 100%;
+      display: grid;
+      place-items: center;
+    }
 
-.panel-title-wrap {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .panel {
+      background: rgba(10, 0, 0, 0.72);
+      border-radius: 46px;
+      backdrop-filter: blur(20px) saturate(145%);
+      border: 1px solid rgba(255, 0, 0, 0.2);
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.9),
+        0 0 60px rgba(255, 0, 0, 0.28),
+        inset 0 0 26px rgba(140, 0, 0, 0.38);
+      padding: 38px 26px;
+      max-width: 680px;
+      width: 92%;
+      margin-bottom: 56px;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
 
-.hidden-pre {
-  visibility: hidden;
-}
+    .panel-inner {
+      position: relative;
+      z-index: 2;
+    }
 
-@keyframes drop {
-  0% { opacity: 0; transform: translateY(-28px); }
-  70% { opacity: 1; transform: translateY(4px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
+    .hidden-pre {
+      visibility: hidden;
+    }
 
-@keyframes waveColor {
-  0% { color: #ffffff; }
-  50% { color: #b30000; }
-  100% { color: #ffffff; }
-}
+    /* title */
+    .title-juvie {
+      font-family: "UnifrakturMaguntia", cursive;
+      letter-spacing: 0.18em;
+      font-size: clamp(36px, 10vw, 72px);
+      position: relative;
+      text-transform: lowercase;
+      text-align: center;
+    }
 
-.fade-letter {
-  display: inline-block;
-  opacity: 0;
-}
+    /* fancy multi-layer */
+    .title-juvie::before,
+    .title-juvie::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
 
-.title-juvie {
-  position: relative;
-  font-family: "UnifrakturMaguntia", cursive;
-  text-transform: lowercase;
-  letter-spacing: 0.18em;
-  font-size: clamp(36px, 10vw, 72px);
-  text-align: center;
-}
+    .title-juvie::before {
+      transform: translate3d(-2px, -2px, 0);
+      color: rgba(255, 255, 255, 0.18);
+      mix-blend-mode: screen;
+    }
 
-.title-juvie::before,
-.title-juvie::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
+    .title-juvie::after {
+      transform: translate3d(2px, 2px, 0);
+      color: rgba(255, 0, 60, 0.85);
+      filter: blur(1px);
+      mix-blend-mode: screen;
+    }
 
-.title-juvie::before {
-  transform: translate3d(-2px, -2px, 0);
-  color: rgba(255, 255, 255, 0.18);
-  mix-blend-mode: screen;
-  text-shadow:
-    0 0 18px rgba(255,255,255,0.35),
-    0 0 40px rgba(255,255,255,0.2);
-}
+    /* songs */
+    .song {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
+    }
 
-.title-juvie::after {
-  transform: translate3d(2px, 2px, 0);
-  color: rgba(255, 0, 60, 0.85);
-  filter: blur(1px);
-  mix-blend-mode: screen;
-  text-shadow:
-    0 0 26px rgba(255,0,80,0.9),
-    0 0 60px rgba(255,0,0,0.8);
-}
+    .roman {
+      font-family: "Cinzel", serif;
+      min-width: 3.2ch;
+      text-align: right;
+    }
 
-.title-juvie span {
-  text-shadow:
-    0 0 6px rgba(0,0,0,0.9),
-    0 0 18px rgba(255,0,0,0.8);
-}
+    .titleword {
+      font-family: "UnifrakturMaguntia", cursive;
+      font-size: clamp(14px, 4vw, 32px);
+    }
 
-.song {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-}
+    .special-font {
+      font-family: "Cormorant Garamond", serif;
+    }
 
-.roman {
-  font-family: "Cinzel", serif;
-  min-width: 3.2ch;
-  text-align: right;
-  white-space: nowrap;
-}
+    /* ASCII gloss (now unused visually but kept for integrity) */
+    .ascii {
+      display: inline-block;
+      white-space: pre;
+      font-family: monospace;
+      opacity: 0;
+      font-size: clamp(6px, 1.4vw, 14px);
+      animation: drop 1s ease forwards .5s, waveColor 6s ease-in-out infinite 1.2s;
+    }
 
-.titleword {
-  font-family: "UnifrakturMaguntia", cursive;
-  display: inline-flex;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  overflow: hidden;
-  min-width: 0;
-  font-size: clamp(14px, 4vw, 32px);
-  letter-spacing: -0.5px;
-}
+    /* floating letters */
+    .fade-letter {
+      display: inline-block;
+      opacity: 0;
+    }
 
-.special-font {
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(15px, 4vw, 32px);
-}
+    @keyframes drop {
+      0% {
+        opacity: 0;
+        transform: translateY(-28px);
+      }
 
-.ascii {
-  display: inline-block;
-  white-space: pre;
-  font-family: monospace;
-  opacity: 0;
-  animation: drop 1s ease forwards .5s, waveColor 6s ease-in-out infinite 1.2s;
-  font-size: clamp(6px, 1.4vw, 14px);
-  max-width: 100%;
-  overflow: hidden;
-}
+      70% {
+        opacity: 1;
+        transform: translateY(4px);
+      }
 
-.coming2026 {
-  position: fixed;
-  right: 32px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #b30000;
-  letter-spacing: 0.18em;
-  writing-mode: vertical-rl;
-  font-size: 1.2rem;
-  opacity: 0.9;
-  text-transform: uppercase;
-  z-index: 10;
-}
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-@media (max-width: 768px) {
-  .coming2026 {
-    top: 14px;
-    right: 50%;
-    transform: translateX(50%);
-    writing-mode: horizontal-tb;
-  }
-}
+    @keyframes waveColor {
+      0% {
+        color: #fff;
+      }
 
-.particle-layer {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: -1;
-}
+      50% {
+        color: #b30000;
+      }
 
-.blood {
-  position: absolute;
-  font-size: 22px;
-  opacity: 0.9;
-  animation: bloodFall 7.5s linear infinite;
-  filter: drop-shadow(0 0 4px rgba(255,0,0,0.6));
-}
+      100% {
+        color: #fff;
+      }
+    }
 
-@keyframes bloodFall {
-  0% { transform: translateY(-40px) scale(1); opacity: 0; }
-  15% { opacity: 1; }
-  80% { opacity: 0.95; }
-  100% { transform: translateY(140vh) scale(1); opacity: 0; }
-}
-</style>
+    /* blood particles */
+    .particle-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .blood {
+      position: absolute;
+      font-size: 22px;
+      opacity: 0.9;
+      animation: bloodFall 7.5s linear infinite;
+      filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.6));
+    }
+
+    @keyframes bloodFall {
+      0% {
+        transform: translateY(-40px) scale(1);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 0.95;
+      }
+
+      100% {
+        transform: translateY(140vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* vinyl cover (reflection removed) */
+    .vinyl-cover {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coming2026 {
+      position: fixed;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #b30000;
+      letter-spacing: 0.18em;
+      writing-mode: vertical-rl;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .coming2026 {
+        top: 14px;
+        right: 50%;
+        transform: translateX(50%);
+        writing-mode: horizontal-tb;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="fog-layer"></div>
-<div class="vignette"></div>
-<div class="particle-layer" id="particle-layer"></div>
+  <div class="fog-layer"></div>
+  <div class="vignette"></div>
+  <div class="particle-layer" id="particle-layer"></div>
+  <div class="coming2026">COMING 2026</div>
 
-<div class="coming2026">COMING 2026</div>
-
-<section class="center min-h-screen px-6">
-  <div class="panel panel-hover" data-depth="1.4">
-    <div class="panel-title-wrap panel-inner">
-      <h1
-        id="title-main"
-        class="hidden-pre title-juvie font-semibold tracking-wide"
-        data-text="juvie"
-        style="color:#b30000;">
-        juvie
-      </h1>
-    </div>
-  </div>
-</section>
-
-<section class="center px-6">
-  <div class="panel panel-hover" data-depth="1.1">
-    <div class="panel-inner">
-      <div style="text-align:center;">
-        <div class="ascii">
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⢡⡀⢀⣠⣤⠤⠷⠤⣤⣄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⣄⠀⠀⣀⡴⠟⠉⢠⡀⠠⢤⣄⣠⠀⠉⠻⢦⡀⠀⢀⡴⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⠄⠀⠀⠈⢳⡞⠉⠀⠀⠀⣠⡇⢀⠄⠀⢷⡀⠀⠀⠀⠘⣶⡋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣰⡟⠉⠒⠦⣄⣠⡏⠀⠀⠀⠀⢰⣿⢀⣴⣶⣦⡄⣻⠄⢀⢀⣠⣤⢧⣄⣠⠤⠒⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣶⣿⡋⠀⠀⠀⠀⠀⡟⠀⠀⢠⣠⠀⠀⠹⣿⣿⣿⣿⣿⠋⠀⠈⡍⠀⠀⠈⣿⠀⠀⠀⠀⠒⢦⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⡏⠀⠀⠀⣀⣀⣸⠁⠀⠀⣆⠙⣿⣆⢠⣿⣷⣿⣿⣷⠀⣠⣾⣷⡞⠀⠀⢹⣀⣀⣀⣀⠀⢸⣷⣧⣤⣀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠸⡄⠀⢀⡘⢦⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⣩⠇⡀⠀⢸⠀⠀⠀⠀⠉⢸⣿⣿⣿⣮⡁⡀⠀⠀⠀⠀
-⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⢄⡀⠀⠀⠀⢀⣷⡸⣄⣙⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣖⡚⠁⢀⣞⡀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⡴⣔⠀⠀⠀
-⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠐⠺⡏⣍⣁⠀⣽⣿⣿⣿⣿⣿⣿⣽⣿⣯⣽⣿⣿⣿⣍⢁⡜⠉⠉⠓⢤⣄⣾⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀
-⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠠⣷⣿⣗⡤⠈⣹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠻⠛⢤⡀⠀⠀⣨⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀
-⠀⣿⣿⣿⣿⣿⠿⢿⣿⣿⠿⢿⣿⣿⣿⣿⣷⡀⠈⣿⣿⣄⠀⣿⣿⣿⠁⠹⣿⣿⣿⣿⣿⢿⣿⣗⠀⠀⠀⠉⠂⣠⣿⣿⡿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀
-⢀⡿⡿⠉⣿⡟⠀⢸⣿⠏⠀⠀⢹⠿⠿⢿⣿⣷⣄⠚⢿⣿⣿⣿⡿⠃⢈⣹⣿⣿⣿⣿⣿⡎⢿⣿⣇⠀⠀⣶⣴⣿⣿⣿⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
-⢸⣿⣿⣾⣿⡇⠀⢸⠋⠀⠀⠀⠸⠀⠀⠀⠉⠛⣿⣷⣟⣙⠿⣿⡁⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⡿⢿⣿⠟⢿⡏⠀⢸⠉⠁⠀⠈⢹⢿⣿⣿⣿⡇
-⢸⣿⣿⣿⣿⡇⠀⠾⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠍⠛⢿⠷⣶⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢿⣿⣆⠀⠁⠀⠀⠀⠀⠈⠀⠀⠀⠀⠞⠀⠘⣿⣿⣟
-⢸⣿⣿⣏⣿⡗⠀⠀⠀⠀⠀⠀⣠⠒⠊⠉⠉⠉⢉⣒⠦⣄⠀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⣤⣿⣿⠿⠶⠶⢤⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡇
-⠘⣿⣷⣿⡝⠁⠀⠀⠀⠀⠀⠉⢁⠀⠀⠀⠀⠀⠀⠈⢹⣮⣿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠙⠀⠀⠀⠀⠀⠀⠈⠛⢆⠀⠀⠀⠀⠀⠀⠀⠋⢻⡇
-⠀⠻⣿⣤⠁⠀⠀⠀⠀⠀⣤⠈⠋⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⡄⠀⠀⠀⠀⠀⢠⡿⠁
-⠀⠀⢻⣧⡀⠀⠀⠀⠀⠀⢸⡀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡀⠀⠀⠀⠀⣼⠃⠀
-⠀⠀⠈⢿⡄⠀⠀⠀⠀⠀⠙⣧⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣧⠀⠀⣀⡼⠁⠀⠀
-⠀⠀⠀⠀⠙⢶⡀⠀⠀⠀⠀⢿⣷⠀⠀⢀⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡟⠀⠀⠛⠁⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠙⠏⠉⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⢿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠁⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⠃⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣷⣀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣞⣿⣿⣿⣿⣿⣿⣿⣼⣿⣿⣿⡿⣾⢻⣿⣿⡟⢻⣿⣿⣿⣿⣿⣿⠙⠳⢤⣀⣀⣀⣠⡤⠖⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⣿⣿⣿⣿⣿⣿⣿⠇⣿⣿⣿⣿⢳⣿⣿⣿⣿⡇⣾⣿⣿⣿⣿⣿⠹⠄⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣟⣿⣿⣿⣿⣻⣿⣾⣿⣿⢸⣿⣿⣿⣿⡇⣿⣿⣿⢹⣿⣿⣇⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣾⣅⡿⣫⠟⣿⣿⡿⢹⡿⠿⣿⣿⣧⢸⣿⣿⣿⣿⠇⣿⣿⠇⡞⣿⡏⠉⢷⠴⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⣸⡿⠿⠟⠁⠀⡇⢸⡇⢀⣧⡤⢰⣿⡟⢸⡇⡏⢹⣿⠀⣿⡟⠀⢳⣿⡇⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠞⠁⠀⠀⡠⠀⠀⠁⣿⠃⢸⣿⠙⢺⣻⡗⠸⡇⠡⢸⣿⣰⠈⠀⠀⢘⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠉⢸⠁⠀⠀⠀⣿⠀⠘⣿⡄⠀⠁⠁⠀⠃⠀⠈⣿⠿⠀⠀⠀⠘⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠙⡇⠀⠀⠀⠀⠀⠀⢀⣏⣥⠀⠀⠀⢠⣤⠔⠀⠦⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        </div>
+  <!-- PANEL 1: TITLE -->
+  <section class="center min-h-screen px-6">
+    <div class="panel panel-hover" data-depth="1.4">
+      <div class="panel-inner">
+        <h1 id="title-main" class="hidden-pre title-juvie" data-text="juvie" style="color:#b30000;">juvie</h1>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="center px-6">
-  <div class="panel panel-hover" data-depth="1.2">
-    <div class="panel-inner text-center">
-      <h2 class="mb-10 text-3xl md:text-4xl tracking-widest" style="font-family:'Cardo', serif; color:#e5e5e5;">
-        <span id="yuvenile-title" class="hidden-pre">YUVENILE</span>
-      </h2>
+  <!-- PANEL 3: TRACKLIST + ALBUM COVER -->
+  <section class="center px-6">
+    <div class="panel panel-hover" data-depth="1.2">
+      <div class="panel-inner text-center">
 
-      <div class="max-w-xl mx-auto space-y-7 md:space-y-8 text-left">
-        <p class="song"><span class="roman">I.</span> <span class="titleword hidden-pre">intro</span></p>
-        <p class="song"><span class="roman">II.</span> <span class="titleword hidden-pre">romania</span></p>
-        <p class="song"><span class="roman">III.</span> <span class="titleword hidden-pre">bail</span></p>
-        <p class="song"><span class="roman">IV.</span> <span class="titleword special-font hidden-pre">sex therapy</span></p>
-        <p class="song"><span class="roman">V.</span> <span class="titleword hidden-pre">988</span></p>
-        <p class="song"><span class="roman">VI.</span> <span class="titleword hidden-pre">arson</span></p>
-        <p class="song"><span class="roman">VII.</span> <span class="titleword hidden-pre">juvenile</span></p>
+        <!-- ALBUM COVER -->
+        <div class="vinyl-cover mx-auto mb-10 w-48 h-48 rounded-2xl shadow-xl">
+          <img
+            src="https://scontent-atl3-2.xx.fbcdn.net/v/t1.15752-9/588331259_1152050797038813_7759778222306357762_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=EvlNkPnS-kYQ7kNvwFMShlS&_nc_oc=AdmZXbHIH_hDM69grByoVXThXqN-8cmOFxsPwWkDDyBhhdwECh3CO-OEofvGgvMV6zo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-2.xx&oh=03_Q7cD3wHEh8Y9rZurGcbH-3vzY6YHyrc4GVECPyJOWRffTQw8pw&oe=694AF891"
+            class="w-full h-full object-cover rounded-2xl" style="filter:brightness(0.92) contrast(1.22);">
+        </div>
+
+        <h2 class="mb-10 text-3xl md:text-4xl tracking-widest" style="color:#e5e5e5;">
+          <span id="yuvenile-title" class="hidden-pre">YUVENILE</span>
+        </h2>
+
+        <div class="max-w-xl mx-auto space-y-7 md:space-y-8 text-left">
+          <p class="song"><span class="roman">I.</span> <span class="titleword hidden-pre">intro</span></p>
+          <p class="song"><span class="roman">II.</span> <span class="titleword hidden-pre">romania</span></p>
+          <p class="song"><span class="roman">III.</span> <span class="titleword hidden-pre">bail</span></p>
+          <p class="song"><span class="roman">IV.</span> <span class="titleword special-font hidden-pre">sex
+              therapy</span></p>
+          <p class="song"><span class="roman">V.</span> <span class="titleword hidden-pre">988</span></p>
+          <p class="song"><span class="roman">VI.</span> <span class="titleword hidden-pre">arson</span></p>
+          <p class="song"><span class="roman">VII.</span> <span class="titleword hidden-pre">juvenile</span></p>
+        </div>
+
+        <p class="text-center text-lg md:text-xl mt-16 italic">all roads lead to juvie</p>
       </div>
-
-      <p class="text-center text-lg md:text-xl mt-16 italic" style="color:#ffffff;">
-        all roads lead to juvie
-      </p>
     </div>
-  </div>
-</section>
+  </section>
 
-<script>
-function letterFX(el, delayStart, fallStep, colorMode) {
-  if (!el) return;
-  let txt = el.textContent.trim();
-  el.textContent = "";
-  el.style.visibility = "visible";
-  [...txt].forEach((ch, i) => {
-    const span = document.createElement("span");
-    span.innerHTML = ch === " " ? "&nbsp;" : ch;
-    span.classList.add("fade-letter");
-    const dropDelay = delayStart + i * fallStep;
-    const waveDelay = colorMode ? i * 0.25 : 0;
-    if (!colorMode) {
-      span.style.animation = "drop .75s ease-out forwards " + dropDelay + "s";
-    } else {
-      span.style.animation =
-        "drop .75s ease-out forwards " + dropDelay + "s," +
-        "waveColor 6s ease-in-out infinite " + waveDelay + "s";
+  <script>
+    function letterFX(el, delayStart, fallStep, colorMode) {
+      if (!el) return;
+      let txt = el.textContent.trim();
+      el.textContent = "";
+      el.style.visibility = "visible";
+
+      [...txt].forEach((ch, i) => {
+        const span = document.createElement("span");
+        span.innerHTML = ch === " " ? "&nbsp;" : ch;
+        span.classList.add("fade-letter");
+
+        const dropDelay = delayStart + i * fallStep;
+        const waveDelay = colorMode ? i * 0.25 : 0;
+
+        span.style.animation =
+          "drop .75s ease-out forwards " + dropDelay + "s" +
+          (colorMode ? ",waveColor 6s ease-in-out infinite " + waveDelay + "s" : "");
+
+        el.appendChild(span);
+      });
+
+      el.classList.remove("hidden-pre");
     }
-    el.appendChild(span);
-  });
-  el.classList.remove("hidden-pre");
-}
 
-document.addEventListener("DOMContentLoaded", () => {
-  letterFX(document.querySelector("#title-main"), 0, 0.14, false);
-  letterFX(document.querySelector("#yuvenile-title"), 0.8, 0.12, true);
-  document.querySelectorAll(".titleword").forEach((el, index) => {
-    letterFX(el, 1.3 + index * 0.4, 0.1, true);
-  });
+    document.addEventListener("DOMContentLoaded", () => {
+      letterFX(document.querySelector("#title-main"), 0, 0.14, false);
+      letterFX(document.querySelector("#yuvenile-title"), 0.8, 0.12, true);
 
-  const particleLayer = document.getElementById("particle-layer");
-  const bloodCount = 22;
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
+      document.querySelectorAll(".titleword").forEach((el, index) => {
+        letterFX(el, 1.3 + index * 0.4, 0.1, true);
+      });
 
-  for (let i = 0; i < bloodCount; i++) {
-    const d = document.createElement("div");
-    d.className = "blood";
-    d.textContent = "🩸";
-    const left = Math.random() * vw;
-    const top = Math.random() * vh * -1;
-    const scale = 0.5 + Math.random() * 1.8;
-    const rot = Math.random() * 45;
-    d.style.left = left + "px";
-    d.style.top = top + "px";
-    d.style.transform = "scale(" + scale + ") rotate(" + rot + "deg)";
-    d.style.animationDelay = (Math.random() * -8) + "s";
-    particleLayer.appendChild(d);
-  }
+      const particleLayer = document.getElementById("particle-layer");
+      const bloodCount = 22;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
 
-  const panels = document.querySelectorAll(".panel-hover");
-  let t = 0;
+      for (let i = 0; i < bloodCount; i++) {
+        const d = document.createElement("div");
+        d.className = "blood";
+        d.textContent = "🩸";
+        d.style.left = Math.random() * vw + "px";
+        d.style.top = Math.random() * vh * -1 + "px";
+        d.style.transform =
+          "scale(" + (0.5 + Math.random() * 1.8) + ") rotate(" + (Math.random() * 45) + "deg)";
+        d.style.animationDelay = (Math.random() * -8) + "s";
+        particleLayer.appendChild(d);
+      }
 
-  function autoFloat() {
-    t += 0.010;
+      const panels = document.querySelectorAll(".panel-hover");
+      let t = 0;
 
-    panels.forEach((panel, i) => {
-      const depth = parseFloat(panel.getAttribute("data-depth")) || 1.2;
-      const tiltX = Math.sin(t * (1.3 + depth * 0.4) + i) * (14 * depth);
-      const tiltY = Math.cos(t * (1.1 + depth * 0.3) + i * 0.7) * (14 * depth);
-      panel.style.transform =
-        "perspective(1100px) rotateX(" + tiltX + "deg) rotateY(" + tiltY + "deg)";
+      function autoFloat() {
+        t += 0.010;
+
+        panels.forEach((panel, i) => {
+          const depth = parseFloat(panel.getAttribute("data-depth"));
+          const tiltX = Math.sin(t * (1.3 + depth * 0.4) + i) * (14 * depth);
+          const tiltY = Math.cos(t * (1.1 + depth * 0.3) + i * 0.7) * (14 * depth);
+          panel.style.transform =
+            "perspective(1100px) rotateX(" + tiltX + "deg) rotateY(" + tiltY + "deg)";
+        });
+
+        requestAnimationFrame(autoFloat);
+      }
+
+      autoFloat();
     });
-
-    requestAnimationFrame(autoFloat);
-  }
-
-  autoFloat();
-});
-</script>
+  </script>
 
 </body>
+
 </html>
