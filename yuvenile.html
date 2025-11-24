@@ -5,7 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>yuvenile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Cinzel:wght@400;700&family=Gothic+A1:wght@300;400&display=swap"
+        rel="stylesheet">
     <style>
         *,
         *::before,
@@ -59,16 +61,20 @@
         }
 
         .title {
+            font-family: "Gothic A1", "Cormorant Garamond", serif;
+            font-weight: 300;
             font-size: clamp(26px, 6vw, 48px);
-            font-weight: 600;
             margin: 0;
             line-height: 1;
+            letter-spacing: 0.6px;
         }
 
         .tracklist {
+            font-family: "Cinzel", serif;
+            font-weight: 400;
             font-size: clamp(16px, 3.5vw, 26px);
-            line-height: 1.6;
-            font-weight: 500;
+            line-height: 1.7;
+            letter-spacing: 0.6px;
             margin: 0;
             text-align: center;
         }
@@ -99,7 +105,6 @@
     <div class="countdown-box">
         <div id="countdown" class="countdown-text">loading</div>
     </div>
-
     <main class="center-box" role="main" aria-labelledby="site-title">
         <h1 id="site-title" class="title">yuvenile</h1>
         <div class="tracklist" aria-label="track list">
@@ -112,11 +117,9 @@
             VII. juvenile
         </div>
     </main>
-
     <div class="footer-box">
         <div class="footer-text">all roads lead to juvie</div>
     </div>
-
     <script>
         function updateCountdown() {
             const target = new Date("January 1, 2026 00:00:00").getTime();
