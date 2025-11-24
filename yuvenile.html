@@ -1,116 +1,212 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>yuvenile</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Cinzel:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
-    body {
-      background: #000;
-      color: #fff;
-      font-family: "Cormorant Garamond", serif;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      padding: 6vh 5vw;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .countdown-box, .center-box, .footer-box {
-      width: 100%;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .countdown-text {
-      font-size: clamp(18px, 3vw, 32px);
-      opacity: 0.85;
-      font-weight: 600;
-      letter-spacing: 2px;
-      white-space: nowrap;
-    }
-    .center-box {
-      flex-direction: column;
-      text-align: center;
-      gap: 1rem;
-      padding: 2vh 0;
-    }
-    .title {
-      font-family: "UnifrakturMaguntia", "Cormorant Garamond", serif;
-      font-weight: 400;
-      font-size: clamp(26px, 6vw, 48px);
-      margin: 0;
-      line-height: 1;
-      letter-spacing: 0.4px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    .tracklist {
-      font-family: "Cinzel", serif;
-      font-weight: 400;
-      font-size: clamp(16px, 3.5vw, 26px);
-      line-height: 1.7;
-      margin: 0;
-      text-align: center;
-    }
-    .footer-text {
-      font-size: clamp(14px, 2.2vw, 20px);
-      opacity: 0.8;
-      text-align: center;
-    }
-    @media (max-width: 360px) {
-      body { padding: 5vh 4vw; }
-      .title { font-size: clamp(22px, 8vw, 36px); }
-      .countdown-text { font-size: clamp(16px, 4vw, 28px); }
-    }
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>yuvenile</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Cinzel:wght@400;700&family=UnifrakturMaguntia&family=Creepster&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: "Cormorant Garamond", serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 6vh 5vw;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .countdown-box,
+        .center-box,
+        .footer-box {
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .countdown-text {
+            font-family: "Creepster", "UnifrakturMaguntia", serif;
+            font-size: clamp(22px, 6vw, 56px);
+            color: #f5efe6;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.6);
+            text-shadow:
+                0 0 8px rgba(255, 20, 20, 0.12),
+                0 0 18px rgba(128, 0, 128, 0.06),
+                0 6px 24px rgba(0, 0, 0, 0.6);
+            opacity: 0.98;
+            line-height: 1;
+            white-space: nowrap;
+            animation: gothic-flicker 3.2s linear infinite;
+        }
+
+        @keyframes gothic-flicker {
+            0% {
+                opacity: 1;
+                text-shadow: 0 0 10px rgba(255, 20, 20, 0.14), 0 0 20px rgba(128, 0, 128, 0.06);
+                transform: translateY(0);
+            }
+
+            8% {
+                opacity: 0.85;
+                text-shadow: 0 0 6px rgba(255, 20, 20, 0.10);
+                transform: translateY(-1px);
+            }
+
+            12% {
+                opacity: 1;
+                text-shadow: 0 0 14px rgba(255, 20, 20, 0.18), 0 0 24px rgba(128, 0, 128, 0.08);
+                transform: translateY(0);
+            }
+
+            20% {
+                opacity: 0.9;
+                text-shadow: 0 0 4px rgba(255, 20, 20, 0.08);
+                transform: translateY(1px);
+            }
+
+            30% {
+                opacity: 1;
+                text-shadow: 0 0 12px rgba(255, 20, 20, 0.12), 0 0 22px rgba(128, 0, 128, 0.06);
+            }
+
+            45% {
+                opacity: 0.88;
+                text-shadow: 0 0 6px rgba(255, 20, 20, 0.08);
+                transform: translateY(-0.5px);
+            }
+
+            60% {
+                opacity: 1;
+                text-shadow: 0 0 16px rgba(255, 20, 20, 0.16), 0 0 28px rgba(128, 0, 128, 0.08);
+            }
+
+            75% {
+                opacity: 0.86;
+                text-shadow: 0 0 4px rgba(255, 20, 20, 0.06);
+                transform: translateY(0.5px);
+            }
+
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 12px rgba(255, 20, 20, 0.12), 0 0 20px rgba(128, 0, 128, 0.06);
+                transform: translateY(0);
+            }
+        }
+
+        .center-box {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+            padding: 2vh 0;
+        }
+
+        .title {
+            font-family: "UnifrakturMaguntia", "Cormorant Garamond", serif;
+            font-weight: 400;
+            font-size: clamp(26px, 6vw, 48px);
+            margin: 0;
+            line-height: 1;
+            letter-spacing: 0.4px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .tracklist {
+            font-family: "Cinzel", serif;
+            font-weight: 400;
+            font-size: clamp(16px, 3.5vw, 26px);
+            line-height: 1.7;
+            margin: 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: clamp(14px, 2.2vw, 20px);
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        @media (max-width: 360px) {
+            body {
+                padding: 5vh 4vw;
+            }
+
+            .title {
+                font-size: clamp(22px, 8vw, 36px);
+            }
+
+            .countdown-text {
+                font-size: clamp(18px, 8vw, 40px);
+                letter-spacing: 4px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="countdown-box">
-    <div id="countdown" class="countdown-text">loading</div>
-  </div>
-  <main class="center-box" role="main" aria-labelledby="site-title">
-    <h1 id="site-title" class="title">yuvenile</h1>
-    <div class="tracklist" aria-label="track list">
-      I. sleepwalker<br>
-      II. romania<br>
-      III. love letters<br>
-      IV. sex therapy<br>
-      V. 988<br>
-      VI. arson<br>
-      VII. juvenile
+    <div class="countdown-box">
+        <div id="countdown" class="countdown-text">loading</div>
     </div>
-  </main>
-  <div class="footer-box">
-    <div class="footer-text">all roads lead to juvie</div>
-  </div>
-  <script>
-    function updateCountdown() {
-      const target = new Date("January 1, 2026 00:00:00").getTime();
-      const now = Date.now();
-      const diff = target - now;
-      if (diff <= 0) {
-        document.getElementById("countdown").textContent = "00 00 00 00";
-        return;
-      }
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const m = Math.floor((diff / (1000 * 60)) % 60);
-      const s = Math.floor((diff / 1000) % 60);
-      document.getElementById("countdown").textContent =
-        String(d).padStart(2, '0') + " " +
-        String(h).padStart(2, '0') + " " +
-        String(m).padStart(2, '0') + " " +
-        String(s).padStart(2, '0');
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
+    <main class="center-box" role="main" aria-labelledby="site-title">
+        <h1 id="site-title" class="title">yuvenile</h1>
+        <div class="tracklist" aria-label="track list">
+            I. sleepwalker<br>
+            II. romania<br>
+            III. love letters<br>
+            IV. sex therapy<br>
+            V. 988<br>
+            VI. arson<br>
+            VII. juvenile
+        </div>
+    </main>
+    <div class="footer-box">
+        <div class="footer-text">all roads lead to juvie</div>
+    </div>
+    <script>
+        function updateCountdown() {
+            const target = new Date("January 1, 2026 00:00:00").getTime();
+            const now = Date.now();
+            const diff = target - now;
+            if (diff <= 0) {
+                document.getElementById("countdown").textContent = "00 00 00 00";
+                return;
+            }
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const m = Math.floor((diff / (1000 * 60)) % 60);
+            const s = Math.floor((diff / 1000) % 60);
+            document.getElementById("countdown").textContent =
+                String(d).padStart(2, '0') + " " +
+                String(h).padStart(2, '0') + " " +
+                String(m).padStart(2, '0') + " " +
+                String(s).padStart(2, '0');
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
 </body>
+
 </html>
