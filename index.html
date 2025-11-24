@@ -2,347 +2,49 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>juvie</title>
+  <meta charset="UTF-8">
+  <title>juvie</title>
 
-<meta property="og:title" content="juvie" />
-<meta property="og:description" content="coming 2026." />
-<meta property="og:url" content="https://juvie.me" />
-<meta property="og:type" content="website" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap"
+    rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=UnifrakturMaguntia&family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: #000;
+      color: #fff;
+      font-family: "Cormorant Garamond", serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-<style>
-body {
-  margin: 0;
-  background: radial-gradient(circle at top, #180000 0%, #050000 55%, #000 100%);
-  color: #ffffff;
-  font-family: "Cardo", serif;
-  overflow-x: hidden;
-  min-height: 100vh;
-  display: grid;
-  justify-items: center;
-  align-items: start;
-  padding-bottom: 80px;
-  position: relative;
-}
+    .title {
+      font-size: clamp(30px, 6vw, 52px);
+      margin-bottom: 0.7rem;
+    }
 
-/* fog + lighting */
-.fog-layer {
-  position: fixed;
-  inset: -40%;
-  background:
-    radial-gradient(circle at 20% 0%, rgba(255, 0, 0, 0.27), transparent 55%),
-    radial-gradient(circle at 80% 100%, rgba(200, 0, 0, 0.33), transparent 60%),
-    radial-gradient(circle at 50% 40%, rgba(255, 80, 80, 0.16), transparent 60%);
-  opacity: 0.95;
-  mix-blend-mode: screen;
-  filter: blur(7px);
-  animation: fogShift 40s linear infinite alternate;
-  pointer-events: none;
-  z-index: -2;
-}
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: clamp(18px, 4vw, 28px);
+      opacity: 0.8;
+    }
 
-.vignette {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle, transparent 0%, transparent 45%, rgba(0,0,0,0.8) 100%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-@keyframes fogShift {
-  0% { transform: translate3d(-40px,20px,0) scale(1.08); }
-  50% { transform: translate3d(25px,-30px,0) scale(1.03); }
-  100% { transform: translate3d(40px,35px,0) scale(1.12); }
-}
-
-/* panels */
-.center {
-  width: 100%;
-  display: grid;
-  place-items: center;
-}
-
-.panel {
-  background: rgba(10,0,0,0.72);
-  border-radius: 46px;
-  backdrop-filter: blur(20px) saturate(145%);
-  border: 1px solid rgba(255,0,0,0.2);
-  box-shadow:
-    0 18px 40px rgba(0,0,0,0.9),
-    0 0 60px rgba(255,0,0,0.28),
-    inset 0 0 26px rgba(140,0,0,0.38);
-  padding: 38px 26px;
-  max-width: 680px;
-  width: 92%;
-  margin-bottom: 56px;
-  overflow: hidden;
-  transform-style: preserve-3d;
-}
-
-.panel-inner {
-  position: relative;
-  z-index: 2;
-}
-
-.hidden-pre { visibility: hidden; }
-
-/* title */
-.title-juvie {
-  font-family: "UnifrakturMaguntia", cursive;
-  letter-spacing: 0.18em;
-  font-size: clamp(36px, 10vw, 72px);
-  position: relative;
-  text-transform: lowercase;
-  text-align: center;
-}
-
-/* fancy multi-layer */
-.title-juvie::before,
-.title-juvie::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.title-juvie::before {
-  transform: translate3d(-2px, -2px, 0);
-  color: rgba(255,255,255,0.18);
-  mix-blend-mode: screen;
-}
-
-.title-juvie::after {
-  transform: translate3d(2px, 2px, 0);
-  color: rgba(255,0,60,0.85);
-  filter: blur(1px);
-  mix-blend-mode: screen;
-}
-
-/* songs */
-.song {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  white-space: nowrap;
-}
-
-.roman {
-  font-family: "Cinzel", serif;
-  min-width: 3.2ch;
-  text-align: right;
-}
-
-.titleword {
-  font-family: "UnifrakturMaguntia", cursive;
-  font-size: clamp(14px, 4vw, 32px);
-}
-
-.special-font {
-  font-family: "Cormorant Garamond", serif;
-}
-
-/* ASCII gloss (now unused visually but kept for integrity) */
-.ascii {
-  display: inline-block;
-  white-space: pre;
-  font-family: monospace;
-  opacity: 0;
-  font-size: clamp(6px, 1.4vw, 14px);
-  animation: drop 1s ease forwards .5s, waveColor 6s ease-in-out infinite 1.2s;
-}
-
-/* floating letters */
-.fade-letter {
-  display: inline-block;
-  opacity: 0;
-}
-
-@keyframes drop {
-  0% { opacity: 0; transform: translateY(-28px); }
-  70% { opacity: 1; transform: translateY(4px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes waveColor {
-  0% { color: #fff; }
-  50% { color: #b30000; }
-  100% { color: #fff; }
-}
-
-/* blood particles */
-.particle-layer {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.blood {
-  position: absolute;
-  font-size: 22px;
-  opacity: 0.9;
-  animation: bloodFall 7.5s linear infinite;
-  filter: drop-shadow(0 0 4px rgba(255,0,0,0.6));
-}
-
-@keyframes bloodFall {
-  0% { transform: translateY(-40px) scale(1); opacity: 0; }
-  15% { opacity: 1; }
-  80% { opacity: 0.95; }
-  100% { transform: translateY(140vh) scale(1); opacity: 0; }
-}
-
-/* vinyl cover (reflection removed) */
-.vinyl-cover {
-  position: relative;
-  overflow: hidden;
-}
-
-.coming2026 {
-  position: fixed;
-  right: 32px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #b30000;
-  letter-spacing: 0.18em;
-  writing-mode: vertical-rl;
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-@media (max-width: 768px) {
-  .coming2026 {
-    top: 14px;
-    right: 50%;
-    transform: translateX(50%);
-    writing-mode: horizontal-tb;
-  }
-}
-</style>
+    a:hover {
+      opacity: 1;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="fog-layer"></div>
-<div class="vignette"></div>
-<div class="particle-layer" id="particle-layer"></div>
-<div class="coming2026">COMING 2026</div>
-
-<!-- PANEL 1: TITLE -->
-<section class="center min-h-screen px-6">
-  <div class="panel panel-hover" data-depth="1.4">
-    <div class="panel-inner">
-      <h1 id="title-main" class="hidden-pre title-juvie" data-text="juvie" style="color:#b30000;">juvie</h1>
-    </div>
-  </div>
-</section>
-
-<!-- PANEL 3: TRACKLIST + ALBUM COVER -->
-<section class="center px-6">
-  <div class="panel panel-hover" data-depth="1.2">
-    <div class="panel-inner text-center">
-
-      <!-- ALBUM COVER -->
-      <div class="vinyl-cover mx-auto mb-10 w-48 h-48 rounded-2xl shadow-xl">
-        <img src="https://scontent-atl3-2.xx.fbcdn.net/v/t1.15752-9/588331259_1152050797038813_7759778222306357762_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=EvlNkPnS-kYQ7kNvwFMShlS&_nc_oc=AdmZXbHIH_hDM69grByoVXThXqN-8cmOFxsPwWkDDyBhhdwECh3CO-OEofvGgvMV6zo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-atl3-2.xx&oh=03_Q7cD3wHEh8Y9rZurGcbH-3vzY6YHyrc4GVECPyJOWRffTQw8pw&oe=694AF891"
-             class="w-full h-full object-cover rounded-2xl"
-             style="filter:brightness(0.92) contrast(1.22);">
-      </div>
-
-      <h2 class="mb-10 text-3xl md:text-4xl tracking-widest" style="color:#e5e5e5;">
-        <span id="yuvenile-title" class="hidden-pre">YUVENILE</span>
-      </h2>
-
-      <div class="max-w-xl mx-auto space-y-7 md:space-y-8 text-left">
-        <p class="song"><span class="roman">I.</span> <span class="titleword hidden-pre">intro</span></p>
-        <p class="song"><span class="roman">II.</span> <span class="titleword hidden-pre">romania</span></p>
-        <p class="song"><span class="roman">III.</span> <span class="titleword hidden-pre">bail</span></p>
-        <p class="song"><span class="roman">IV.</span> <span class="titleword special-font hidden-pre">sex therapy</span></p>
-        <p class="song"><span class="roman">V.</span> <span class="titleword hidden-pre">988</span></p>
-        <p class="song"><span class="roman">VI.</span> <span class="titleword hidden-pre">arson</span></p>
-        <p class="song"><span class="roman">VII.</span> <span class="titleword hidden-pre">juvenile</span></p>
-      </div>
-
-      <p class="text-center text-lg md:text-xl mt-16 italic">all roads lead to juvie</p>
-    </div>
-  </div>
-</section>
-
-<script>
-function letterFX(el, delayStart, fallStep, colorMode) {
-  if (!el) return;
-  let txt = el.textContent.trim();
-  el.textContent = "";
-  el.style.visibility = "visible";
-
-  [...txt].forEach((ch, i) => {
-    const span = document.createElement("span");
-    span.innerHTML = ch === " " ? "&nbsp;" : ch;
-    span.classList.add("fade-letter");
-
-    const dropDelay = delayStart + i * fallStep;
-    const waveDelay = colorMode ? i * 0.25 : 0;
-
-    span.style.animation =
-      "drop .75s ease-out forwards " + dropDelay + "s" +
-      (colorMode ? ",waveColor 6s ease-in-out infinite " + waveDelay + "s" : "");
-
-    el.appendChild(span);
-  });
-
-  el.classList.remove("hidden-pre");
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  letterFX(document.querySelector("#title-main"), 0, 0.14, false);
-  letterFX(document.querySelector("#yuvenile-title"), 0.8, 0.12, true);
-
-  document.querySelectorAll(".titleword").forEach((el, index) => {
-    letterFX(el, 1.3 + index * 0.4, 0.1, true);
-  });
-
-  const particleLayer = document.getElementById("particle-layer");
-  const bloodCount = 22;
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
-
-  for (let i = 0; i < bloodCount; i++) {
-    const d = document.createElement("div");
-    d.className = "blood";
-    d.textContent = "🩸";
-    d.style.left = Math.random() * vw + "px";
-    d.style.top = Math.random() * vh * -1 + "px";
-    d.style.transform =
-      "scale(" + (0.5 + Math.random() * 1.8) + ") rotate(" + (Math.random() * 45) + "deg)";
-    d.style.animationDelay = (Math.random() * -8) + "s";
-    particleLayer.appendChild(d);
-  }
-
-  const panels = document.querySelectorAll(".panel-hover");
-  let t = 0;
-
-  function autoFloat() {
-    t += 0.010;
-
-    panels.forEach((panel, i) => {
-      const depth = parseFloat(panel.getAttribute("data-depth"));
-      const tiltX = Math.sin(t * (1.3 + depth * 0.4) + i) * (14 * depth);
-      const tiltY = Math.cos(t * (1.1 + depth * 0.3) + i * 0.7) * (14 * depth);
-      panel.style.transform =
-        "perspective(1100px) rotateX(" + tiltX + "deg) rotateY(" + tiltY + "deg)";
-    });
-
-    requestAnimationFrame(autoFloat);
-  }
-
-  autoFloat();
-});
-</script>
+  <div class="title">juvie</div>
+  <a href="yuvenile.html">yuvenile</a>
 
 </body>
+
 </html>
