@@ -1,50 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>juvie</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap"
     rel="stylesheet">
-
   <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
     body {
+      height: 100%;
       margin: 0;
-      padding: 0;
-      height: 100vh;
+    }
+
+    body {
       background: #000;
       color: #fff;
       font-family: "Cormorant Garamond", serif;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 5vh 5vw;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
     }
 
     .title {
       font-size: clamp(30px, 6vw, 52px);
-      margin-bottom: 0.7rem;
+      margin: 0 0 0.7rem 0;
+      line-height: 1;
+    }
+
+    .link {
+      display: inline-block;
+      margin-top: 0.5rem;
     }
 
     a {
       text-decoration: none;
-      color: white;
+      color: #fff;
       font-size: clamp(18px, 4vw, 28px);
-      opacity: 0.8;
+      opacity: 0.9;
+      transition: opacity 160ms ease;
     }
 
-    a:hover {
+    a:hover,
+    a:focus {
       opacity: 1;
+    }
+
+    @media (max-width: 360px) {
+      body {
+        padding: 6vh 4vw;
+      }
+
+      .title {
+        font-size: clamp(24px, 8vw, 40px);
+      }
     }
   </style>
 </head>
 
 <body>
-
-  <div class="title">juvie</div>
-  <a href="yuvenile.html">yuvenile</a>
-
+  <div class="container">
+    <h1 class="title">juvie</h1>
+    <div class="link"><a href="yuvenile.html">yuvenile</a></div>
+  </div>
 </body>
 
 </html>
