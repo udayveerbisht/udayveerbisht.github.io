@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>yuvenile</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: "Cormorant Garamond", serif;
+            overflow: hidden;
+        }
+
+        /* COUNTDOWN */
+        .countdown-box {
+            position: absolute;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .countdown-text {
+            font-size: clamp(18px, 4vw, 30px);
+            font-weight: 600;
+            opacity: 0.85;
+            letter-spacing: 2px;
+        }
+
+        /* MAIN CONTENT */
+        .center-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: left;
+        }
+
+        .title {
+            font-size: clamp(26px, 5vw, 40px);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .tracklist {
+            font-size: clamp(16px, 3.3vw, 26px);
+            font-weight: 500;
+            line-height: 1.55;
+        }
+
+        /* FOOTER */
+        .footer-box {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .footer-text {
+            font-size: clamp(16px, 3vw, 24px);
+            font-weight: 600;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown-box">
+        <div id="countdown" class="countdown-text">loading</div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="center-box">
+        <div class="title">yuvenile</div>
+
+        <div class="tracklist">
+            I. sleepwalker<br>
+            II. romania<br>
+            III. love letters<br>
+            IV. sex therapy<br>
+            V. 988<br>
+            VI. arson<br>
+            VII. juvenile
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-box">
+        <div class="footer-text">all roads lead to juvie</div>
+    </div>
+
+    <!-- COUNTDOWN SCRIPT -->
+    <script>
+        function updateCountdown() {
+            const target = new Date("January 1, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+
+            if (diff <= 0) {
+                document.getElementById("countdown").innerHTML = "00 00 00 00";
+                return;
+            }
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const m = Math.floor((diff / (1000 * 60)) % 60);
+            const s = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("countdown").innerHTML =
+                String(d).padStart(2, '0') + " " +
+                String(h).padStart(2, '0') + " " +
+                String(m).padStart(2, '0') + " " +
+                String(s).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+
+</body>
+
+</html>
