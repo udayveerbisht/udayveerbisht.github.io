@@ -1,147 +1,116 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>yuvenile</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Cinzel:wght@400;700&family=Gothic+A1:wght@300;400&display=swap"
-        rel="stylesheet">
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            background: #000;
-            color: #fff;
-            font-family: "Cormorant Garamond", serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            padding: 6vh 5vw;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .countdown-box,
-        .center-box,
-        .footer-box {
-            width: 100%;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .countdown-text {
-            font-size: clamp(18px, 3vw, 32px);
-            opacity: 0.85;
-            font-weight: 600;
-            letter-spacing: 2px;
-            white-space: nowrap;
-        }
-
-        .center-box {
-            flex-direction: column;
-            text-align: center;
-            gap: 1rem;
-            padding: 2vh 0;
-        }
-
-        .title {
-            font-family: "Gothic A1", "Cormorant Garamond", serif;
-            font-weight: 300;
-            font-size: clamp(26px, 6vw, 48px);
-            margin: 0;
-            line-height: 1;
-            letter-spacing: 0.6px;
-        }
-
-        .tracklist {
-            font-family: "Cinzel", serif;
-            font-weight: 400;
-            font-size: clamp(16px, 3.5vw, 26px);
-            line-height: 1.7;
-            letter-spacing: 0.6px;
-            margin: 0;
-            text-align: center;
-        }
-
-        .footer-text {
-            font-size: clamp(14px, 2.2vw, 20px);
-            opacity: 0.8;
-            text-align: center;
-        }
-
-        @media (max-width: 360px) {
-            body {
-                padding: 5vh 4vw;
-            }
-
-            .title {
-                font-size: clamp(22px, 8vw, 36px);
-            }
-
-            .countdown-text {
-                font-size: clamp(16px, 4vw, 28px);
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>yuvenile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Cinzel:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: #000;
+      color: #fff;
+      font-family: "Cormorant Garamond", serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 6vh 5vw;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .countdown-box, .center-box, .footer-box {
+      width: 100%;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .countdown-text {
+      font-size: clamp(18px, 3vw, 32px);
+      opacity: 0.85;
+      font-weight: 600;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+    .center-box {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+      padding: 2vh 0;
+    }
+    .title {
+      font-family: "UnifrakturMaguntia", "Cormorant Garamond", serif;
+      font-weight: 400;
+      font-size: clamp(26px, 6vw, 48px);
+      margin: 0;
+      line-height: 1;
+      letter-spacing: 0.4px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .tracklist {
+      font-family: "Cinzel", serif;
+      font-weight: 400;
+      font-size: clamp(16px, 3.5vw, 26px);
+      line-height: 1.7;
+      margin: 0;
+      text-align: center;
+    }
+    .footer-text {
+      font-size: clamp(14px, 2.2vw, 20px);
+      opacity: 0.8;
+      text-align: center;
+    }
+    @media (max-width: 360px) {
+      body { padding: 5vh 4vw; }
+      .title { font-size: clamp(22px, 8vw, 36px); }
+      .countdown-text { font-size: clamp(16px, 4vw, 28px); }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="countdown-box">
-        <div id="countdown" class="countdown-text">loading</div>
+  <div class="countdown-box">
+    <div id="countdown" class="countdown-text">loading</div>
+  </div>
+  <main class="center-box" role="main" aria-labelledby="site-title">
+    <h1 id="site-title" class="title">yuvenile</h1>
+    <div class="tracklist" aria-label="track list">
+      I. sleepwalker<br>
+      II. romania<br>
+      III. love letters<br>
+      IV. sex therapy<br>
+      V. 988<br>
+      VI. arson<br>
+      VII. juvenile
     </div>
-    <main class="center-box" role="main" aria-labelledby="site-title">
-        <h1 id="site-title" class="title">yuvenile</h1>
-        <div class="tracklist" aria-label="track list">
-            I. sleepwalker<br>
-            II. romania<br>
-            III. love letters<br>
-            IV. sex therapy<br>
-            V. 988<br>
-            VI. arson<br>
-            VII. juvenile
-        </div>
-    </main>
-    <div class="footer-box">
-        <div class="footer-text">all roads lead to juvie</div>
-    </div>
-    <script>
-        function updateCountdown() {
-            const target = new Date("January 1, 2026 00:00:00").getTime();
-            const now = Date.now();
-            const diff = target - now;
-            if (diff <= 0) {
-                document.getElementById("countdown").textContent = "00 00 00 00";
-                return;
-            }
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const m = Math.floor((diff / (1000 * 60)) % 60);
-            const s = Math.floor((diff / 1000) % 60);
-            document.getElementById("countdown").textContent =
-                String(d).padStart(2, '0') + " " +
-                String(h).padStart(2, '0') + " " +
-                String(m).padStart(2, '0') + " " +
-                String(s).padStart(2, '0');
-        }
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script>
+  </main>
+  <div class="footer-box">
+    <div class="footer-text">all roads lead to juvie</div>
+  </div>
+  <script>
+    function updateCountdown() {
+      const target = new Date("January 1, 2026 00:00:00").getTime();
+      const now = Date.now();
+      const diff = target - now;
+      if (diff <= 0) {
+        document.getElementById("countdown").textContent = "00 00 00 00";
+        return;
+      }
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+      document.getElementById("countdown").textContent =
+        String(d).padStart(2, '0') + " " +
+        String(h).padStart(2, '0') + " " +
+        String(m).padStart(2, '0') + " " +
+        String(s).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
-
 </html>
