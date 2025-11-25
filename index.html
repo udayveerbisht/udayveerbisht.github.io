@@ -2,265 +2,169 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>juvie</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Cinzel:wght@400;700&family=UnifrakturMaguntia&display=swap"
-        rel="stylesheet">
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>juvie</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Cinzel:wght@400;700&family=UnifrakturMaguntia&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-        }
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
 
-        html {
-            scrollbar-width: thin;
-            scrollbar-color: transparent transparent;
-        }
+    body {
+      background: #000;
+      color: #efe9e4;
+      font-family: "Cormorant Garamond", serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 6vh 5vw;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
 
-        ::-webkit-scrollbar {
-            width: 12px;
-            height: 12px;
-            background: transparent;
-        }
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://pngimg.com/d/rose_PNG66729.png") no-repeat center;
+      background-size: 750px;
+      opacity: 0.17;
+      filter: brightness(1.25);
+      z-index: 0;
+      pointer-events: none;
+    }
 
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
+    .countdown-box,
+    .footer-box {
+      width: 100%;
+      max-width: 980px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
 
-        ::-webkit-scrollbar-thumb {
-            background: transparent;
-            border-radius: 10px;
-        }
+    .countdown-text {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(38px, 8vw, 92px);
+      color: #7B1E28;
+      letter-spacing: 4px;
+      font-weight: 500;
+      text-shadow:
+        0 4px 18px rgba(60, 0, 20, 0.45),
+        0 8px 30px rgba(40, 0, 15, 0.6);
+      display: flex;
+      gap: 14px;
+      z-index: 2;
+    }
 
-        body {
-            background: #000;
-            color: #efe9e4;
-            font-family: "Cormorant Garamond", serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: clamp(2vh, 4vh, 6vh) 5vw;
-            position: relative;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    .title {
+      font-family: "UnifrakturMaguntia", serif;
+      font-size: clamp(34px, 8vw, 96px);
+      margin: 0;
+      color: #7B1E28;
+      text-shadow: 0 8px 30px rgba(40, 0, 10, 0.65);
+      transform: scaleY(0.95);
+      z-index: 2;
+    }
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background-image: url("https://pngimg.com/d/rose_PNG66729.png");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 850px;
-            opacity: 0.14;
-            filter: brightness(1.05);
-            z-index: 0;
-        }
+    .center-box {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+      padding: 2vh 0;
+      z-index: 2;
+    }
 
-        header {
-            width: 100%;
-            max-width: clamp(320px, 640px, 900px);
-            margin: 0 auto 0.75rem;
-            z-index: 2;
-            text-align: center;
-        }
+    .tracklist {
+      font-family: "Cinzel", serif;
+      font-weight: 400;
+      font-size: clamp(17px, 3vw, 26px);
+      line-height: 1.7;
+      color: #efe9e4;
+      z-index: 2;
+    }
 
-        .countdown-text {
-            font-family: "Cormorant Garamond", serif;
-            font-size: clamp(18px, 4.2vw, 36px);
-            color: #7B1E28;
-            letter-spacing: 3px;
-            font-weight: 500;
-            text-shadow: 0 2px 14px rgba(60, 0, 20, 0.35);
-            display: inline-block;
-            white-space: nowrap;
-            margin: 0 auto;
-            z-index: 2;
-        }
+    .footer-text {
+      font-size: clamp(12px, 2vw, 18px);
+      opacity: 0.78;
+      text-align: center;
+      z-index: 2;
+    }
 
-        .time-footer {
-            margin-top: 0.6rem;
-            font-size: clamp(12px, 2.4vw, 18px);
-            color: #efe9e4;
-            opacity: 0.9;
-            z-index: 2;
-        }
+    @media (max-width: 480px) {
+      .countdown-text {
+        font-size: clamp(24px, 10vw, 48px);
+      }
 
-        main {
-            flex: 1 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            z-index: 2;
-            padding: 1.5vh 0;
-        }
-
-        .content-panel {
-            width: 100%;
-            max-width: clamp(300px, 46vw, 440px);
-            background: rgba(8, 8, 8, 0.36);
-            -webkit-backdrop-filter: blur(14px) saturate(1.05);
-            backdrop-filter: blur(14px) saturate(1.05);
-            border-radius: 40px;
-            padding: clamp(0.9rem, 3.5vw, 1.8rem);
-            display: flex;
-            flex-direction: column;
-            gap: clamp(0.6rem, 2.2vw, 1rem);
-            align-items: center;
-            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6);
-            border: none;
-            box-sizing: border-box;
-            transform-origin: center;
-        }
-
-        .cover-wrap {
-            width: 100%;
-            padding: clamp(8px, 2.5vw, 12px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            border-radius: 26px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
-        }
-
-        .album-cover {
-            display: block;
-            width: clamp(120px, 30vw, 220px);
-            height: auto;
-            border-radius: 14px;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
-            object-fit: cover;
-            background: #0a0a0a;
-        }
-
-        .album-info {
-            width: 100%;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            align-items: center;
-        }
-
-        .title {
-            font-family: "UnifrakturMaguntia", serif;
-            font-size: clamp(28px, 8.5vw, 48px);
-            margin: 0;
-            color: #7B1E28;
-            text-shadow: 0 4px 18px rgba(40, 0, 10, 0.5);
-            transform: scaleY(0.95);
-            line-height: 0.95;
-        }
-
-        .tracklist {
-            font-family: "Cinzel", serif;
-            font-weight: 400;
-            font-size: clamp(12px, 2.6vw, 16px);
-            line-height: 1.6;
-            color: #efe9e4;
-            white-space: pre-line;
-            margin: 0;
-        }
-
-        @media (max-width: 520px) {
-            body {
-                padding: clamp(2vh, 3vh, 4vh) 4vw;
-            }
-
-            .content-panel {
-                border-radius: 22px;
-                padding: 0.9rem;
-                max-width: 92vw;
-            }
-
-            .cover-wrap {
-                padding: 10px;
-                border-radius: 18px;
-            }
-
-            .album-cover {
-                border-radius: 12px;
-                width: clamp(110px, 40vw, 88vw);
-                max-width: 88vw;
-            }
-
-            .title {
-                font-size: clamp(22px, 10vw, 40px);
-            }
-
-            .countdown-text {
-                font-size: clamp(16px, 6vw, 26px);
-                letter-spacing: 2px;
-            }
-
-            .time-footer {
-                font-size: clamp(11px, 3.6vw, 14px);
-            }
-        }
-    </style>
+      .title {
+        font-size: clamp(28px, 12vw, 52px);
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <div id="countdown" class="countdown-text">00 : 00 : 00 : 00</div>
-        <div class="time-footer">all roads lead to juvie</div>
-    </header>
 
-    <main>
-        <section class="content-panel" aria-labelledby="album-title">
-            <div class="cover-wrap">
-                <img class="album-cover"
-                    src="https://raw.githubusercontent.com/udayveerbisht/udayveerbisht.github.io/main/cover.jpg"
-                    alt="juvie album cover">
-            </div>
+  <div class="countdown-box">
+    <div id="countdown" class="countdown-text">00 : 00 : 00 : 00</div>
+  </div>
 
-            <div class="album-info">
-                <h1 id="album-title" class="title">juvie</h1>
-                <p class="tracklist">I. no caller id
-                    II. sthu
-                    III. romania
-                    IV. dui (interlude)
-                    V. bodies
-                    VI. nsfw
-                    VII. juvenile</p>
-            </div>
-        </section>
-    </main>
+  <main class="center-box">
+    <h1 class="title">juvie</h1>
+    <div class="tracklist">
+      I. no caller id<br>
+      II. sthu<br>
+      III. romania<br>
+      IV. dui (interlude)<br>
+      V. bodies<br>
+      VI. nsfw<br>
+      VII. juvenile
+    </div>
+  </main>
 
-    <script>
-        function updateCountdown() {
-            const target = new Date("January 1, 2026 00:00:00").getTime();
-            const now = Date.now();
-            const diff = target - now;
-            const box = document.getElementById("countdown");
-            if (!box) return;
-            if (diff <= 0) {
-                box.textContent = "00 : 00 : 00 : 00";
-                return;
-            }
-            const d = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, "0");
-            const h = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, "0");
-            const m = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
-            const s = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
-            box.textContent = `${d} : ${h} : ${m} : ${s}`;
-        }
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script>
+  <div class="footer-box">
+    <div class="footer-text">all roads lead to juvie</div>
+  </div>
+
+  <script>
+    function updateCountdown() {
+      const target = new Date("January 1, 2026 00:00:00").getTime();
+      const now = Date.now();
+      const diff = target - now;
+
+      const box = document.getElementById("countdown");
+
+      if (diff <= 0) {
+        box.textContent = "00 : 00 : 00 : 00";
+        return;
+      }
+
+      const d = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, "0");
+      const h = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, "0");
+      const m = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
+      const s = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+
+      box.textContent = `${d} : ${h} : ${m} : ${s}`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
 </body>
 
 </html>
