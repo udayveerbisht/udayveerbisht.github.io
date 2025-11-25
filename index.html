@@ -2,168 +2,168 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>juvie</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Cinzel:wght@400;700&family=UnifrakturMaguntia&display=swap"
-    rel="stylesheet">
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>juvie</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Cinzel:wght@400;700&family=UnifrakturMaguntia&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-    }
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
 
-    body {
-      background: #000;
-      color: #efe9e4;
-      font-family: "Cormorant Garamond", serif;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      padding: 6vh 5vw;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
+        body {
+            background: #000;
+            color: #efe9e4;
+            font-family: "Cormorant Garamond", serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 6vh 5vw;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
 
-    body::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url("https://pngimg.com/d/rose_PNG66729.png") no-repeat center;
-      background-size: 750px;
-      opacity: 0.17;
-      filter: brightness(1.25);
-      z-index: 0;
-      pointer-events: none;
-    }
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("https://raw.githubusercontent.com/udayveerbisht/udayveerbisht.github.io/refs/heads/main/cover.jpg") no-repeat center;
+            background-size: 500px;
+            opacity: 0.3;
+            filter: brightness(1.25);
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    .countdown-box,
-    .footer-box {
-      width: 100%;
-      max-width: 980px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2;
-    }
+        .countdown-box,
+        .footer-box {
+            width: 100%;
+            max-width: 980px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
 
-    .countdown-text {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(38px, 8vw, 92px);
-      color: #7B1E28;
-      letter-spacing: 4px;
-      font-weight: 500;
-      text-shadow:
-        0 4px 18px rgba(60, 0, 20, 0.45),
-        0 8px 30px rgba(40, 0, 15, 0.6);
-      display: flex;
-      gap: 14px;
-      z-index: 2;
-    }
+        .countdown-text {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(38px, 8vw, 70px);
+            color: #7B1E28;
+            letter-spacing: 4px;
+            font-weight: 500;
+            text-shadow:
+                0 4px 18px rgba(60, 0, 20, 0.45),
+                0 8px 30px rgba(40, 0, 15, 0.6);
+            display: flex;
+            gap: 14px;
+            z-index: 2;
+        }
 
-    .title {
-      font-family: "UnifrakturMaguntia", serif;
-      font-size: clamp(34px, 8vw, 96px);
-      margin: 0;
-      color: #7B1E28;
-      text-shadow: 0 8px 30px rgba(40, 0, 10, 0.65);
-      transform: scaleY(0.95);
-      z-index: 2;
-    }
+        .title {
+            font-family: "UnifrakturMaguntia", serif;
+            font-size: clamp(40px, 8vw, 70px);
+            margin: 0;
+            color: #7B1E28;
+            text-shadow: 0 8px 30px rgba(40, 0, 10, 0.65);
+            transform: scaleY(1);
+            z-index: 2;
+        }
 
-    .center-box {
-      flex-direction: column;
-      text-align: center;
-      gap: 1rem;
-      padding: 2vh 0;
-      z-index: 2;
-    }
+        .center-box {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+            padding: 2vh 0;
+            z-index: 2;
+        }
 
-    .tracklist {
-      font-family: "Cinzel", serif;
-      font-weight: 400;
-      font-size: clamp(17px, 3vw, 26px);
-      line-height: 1.7;
-      color: #efe9e4;
-      z-index: 2;
-    }
+        .tracklist {
+            font-family: "Cinzel", serif;
+            font-weight: 400;
+            font-size: clamp(20px, 3vw, 28px);
+            line-height: 1.7;
+            color: #efe9e4;
+            z-index: 2;
+        }
 
-    .footer-text {
-      font-size: clamp(12px, 2vw, 18px);
-      opacity: 0.78;
-      text-align: center;
-      z-index: 2;
-    }
+        .footer-text {
+            font-size: clamp(20px, 2vw, 25px);
+            opacity: 0.78;
+            text-align: center;
+            z-index: 2;
+        }
 
-    @media (max-width: 480px) {
-      .countdown-text {
-        font-size: clamp(24px, 10vw, 48px);
-      }
+        @media (max-width: 480px) {
+            .countdown-text {
+                font-size: clamp(24px, 10vw, 48px);
+            }
 
-      .title {
-        font-size: clamp(28px, 12vw, 52px);
-      }
-    }
-  </style>
+            .title {
+                font-size: clamp(60px, 12vw, 100px);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <div class="countdown-box">
-    <div id="countdown" class="countdown-text">00 : 00 : 00 : 00</div>
-  </div>
-
-  <main class="center-box">
-    <h1 class="title">juvie</h1>
-    <div class="tracklist">
-      I. no caller id<br>
-      II. sthu<br>
-      III. romania<br>
-      IV. dui (interlude)<br>
-      V. bodies<br>
-      VI. nsfw<br>
-      VII. juvenile
+    <div class="countdown-box">
+        <div id="countdown" class="countdown-text">00 : 00 : 00 : 00</div>
     </div>
-  </main>
 
-  <div class="footer-box">
-    <div class="footer-text">all roads lead to juvie</div>
-  </div>
+    <main class="center-box">
+        <h1 class="title">juvie</h1>
+        <div class="tracklist">
+            I. no caller id<br>
+            II. sthu<br>
+            III. romania<br>
+            IV. dui (interlude)<br>
+            V. bodies<br>
+            VI. nsfw<br>
+            VII. juvenile
+        </div>
+    </main>
 
-  <script>
-    function updateCountdown() {
-      const target = new Date("January 1, 2026 00:00:00").getTime();
-      const now = Date.now();
-      const diff = target - now;
+    <div class="footer-box">
+        <div class="footer-text">all roads lead to juvie</div>
+    </div>
 
-      const box = document.getElementById("countdown");
+    <script>
+        function updateCountdown() {
+            const target = new Date("January 1, 2026 00:00:00").getTime();
+            const now = Date.now();
+            const diff = target - now;
 
-      if (diff <= 0) {
-        box.textContent = "00 : 00 : 00 : 00";
-        return;
-      }
+            const box = document.getElementById("countdown");
 
-      const d = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, "0");
-      const h = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, "0");
-      const m = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
-      const s = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+            if (diff <= 0) {
+                box.textContent = "00 : 00 : 00 : 00";
+                return;
+            }
 
-      box.textContent = `${d} : ${h} : ${m} : ${s}`;
-    }
+            const d = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, "0");
+            const h = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, "0");
+            const m = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
+            const s = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
+            box.textContent = `${d} : ${h} : ${m} : ${s}`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
 
 </body>
 
